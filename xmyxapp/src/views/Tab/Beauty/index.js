@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import "./index.scss"
 import {getLittle} from './model.js'
 
-class Woman extends Component {
+class Baeuty extends Component {
     constructor(props){
         super(props);
 
@@ -10,7 +10,6 @@ class Woman extends Component {
             littleList:[],
             datalist:[],
             infoList:[],
-            icon:1
         };
     }
     componentDidMount(){
@@ -19,7 +18,7 @@ class Woman extends Component {
             this.setState({
                 littleList:res.categories,
                 datalist:res.items.list,
-                icon:res.items.list.platform
+               
             })
         })
 
@@ -65,9 +64,9 @@ class Woman extends Component {
                                                 <div className="info">
                                                     <p>{item.title}</p>
                                                     {
-                                                        this.state.icon==1?
-                                                    <span className="taobao">淘宝{item.platform}</span>
-                                                    :<span className="tianmao">天猫{item.platform}</span>
+                                                        item.platform==1?
+                                                    <span className="taobao">淘宝</span>
+                                                    :<span className="tianmao">天猫</span>
                                                     }
                                                     <span className="bao">包邮</span>
                                                     <div className="d1">                                                                                           
@@ -84,4 +83,4 @@ class Woman extends Component {
  </div>
     }
 }
-export default Woman
+export default Baeuty
