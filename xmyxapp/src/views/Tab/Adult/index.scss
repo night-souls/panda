@@ -1,17 +1,18 @@
 
 .xiaotu{
+	margin-top: 35px;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	list-style: none;
 	width: 100%;
+	p{
+	font-size: 1rem;
+	font-weight:bold;
+	color: #444;
+	}
 }
 
-.xiaotu p{
-	font-size: 1rem;
-	font-weight: bold;
-	color: #444;
-}
 
 .ltitle{
 	color: #aaa;
@@ -23,28 +24,26 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	color: #555;
-
-}
-.down1 li{
+	li{
 	width: 48%;
 	height: 50%;
 	font-size: 1.1rem;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-}
-.down1>li img{
-	height: 192px;
-}
-.down1 li .baodi3{
-	height: 15px;
-}
-.down1 li .baodi1{
+	.baodi3{height: 15px;}
+	.baodi2{float: right;}
+	.baodi1{
 	background: #f22;
 	border-radius: 6px;
 	color: #fff;
 	float: left;
+	}
+
+	img{height: 192px;}
+    }
 }
-.down1 li .baodi2{
-	float: right;	
+
+.count5{
+	color: red;
 }

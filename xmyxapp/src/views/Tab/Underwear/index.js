@@ -20,9 +20,7 @@ class Underwear extends Component {
 			this.setState({
 				underwearli:res.data.data.categories
 			})})}
-
 	   componentDidMount(){
-
     
 			axios({
 			url:"http://www.xiongmaoyouxuan.com/api/tab/16/feeds?start=0&sort=0",
@@ -37,10 +35,6 @@ class Underwear extends Component {
 				underwearlist:res.data.data.list
 			})
 	})
-
-
-	
-
     }
     render() {
         return <div>
@@ -74,7 +68,7 @@ class Underwear extends Component {
 					 // onClick={this.getinfo.bind(this,item.id)}
 					 >
 					<img src={item.image} title={item.qunTitle}/>
-					<p>{item.title}</p><div></div><div><span>${item.originPrice}</span></div></li>
+					<p>{item.title}</p><div></div><div><span className="count5">${item.originPrice}</span></div></li>
 				):null
        	}
        </ul>

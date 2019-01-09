@@ -1,20 +1,25 @@
-
+import { PullToRefresh, Button } from 'antd-mobile';
 import React, { Component } from "react"
 import axios from 'axios'
-import './index.css'
+import './index.scss'
+import {getlist12} from "./model";
 import {NavLink} from "react-router-dom"
 class Adult extends Component {
 	constructor(props) {
 	  super(props);
 	
 	  this.state = {
+	  	refreshing: false,
+     	down: true,
+     	count123:0,
+     	data: [],
 	  	adultli:[],
 	  	adultlist:[]
 	  };
 	}
 	componentWillMount(){
-		axios({url:"http://www.xiongmaoyouxuan.com/api/tab/17?start=0"}).then(res=>{
-			console.log(res.data.data.categories,'xiaotu',this.state.adultli)
+		axios({url:`http://www.xiongmaoyouxuan.com/api/tab/17?start=0`}).then(res=>{
+			
 			this.setState({
 				adultli:res.data.data.categories
 			})
@@ -22,16 +27,12 @@ class Adult extends Component {
 		
 	}
 	componentDidMount(){
-		axios({
-			url:"http://www.xiongmaoyouxuan.com/api/tab/17/feeds?start=0&sort=0"}).then(res=>{
-			console.log(res.data.data.list,this.state.adultli,this.state.adultlist)
-			this.setState({
-				adultlist:res.data.data.list
-			})
-	})
-	}
+		getlist12(this.state.count123).then(res=>{
+			this.setState({adultlist:res.list
+				
+			})})}
     render() {
-        return <div>
+        return( <div>
         <div>
       	<p className="ltitle">潮流精选</p>
        <ul className="xiaotu">
@@ -71,12 +72,52 @@ class Adult extends Component {
 					<p>{item.title}</p><div className="baodi3">
 					<span className="baodi1">猫天</span>
 					 <span className="baodi2"> 	包递</span></div>
-					 <p><span>${item.originPrice}</span></p></li>
+					 <p><span className="count5">${item.originPrice}</span></p></li>
 				):null
        	}
        </ul>
        </div>
-		</div>
+      <PullToRefresh
+        damping={60}
+        ref={el => this.ptr = el}
+        direction={ 'up' }
+        refreshing={this.state.refreshing}
+        onRefresh={() => { 
+        	this.setState({ refreshing: true,count123:this.state.count123+=20 });
+    	getlist12(this.state.count123).then(res=>{this.setState({
+				refreshing: false,adultlist:[...this.state.adultlist,...res.list]
+			})})}}
+      >{	
+       	  this.state.data.length?
+		  this.state.data.map(i=> (
+          <li key={i.id}
+		  // onClick={this.getinfo.bind(this,item.id)}
+          style={{ textAlign: 'center', padding: 20 }}>
+          <img src={i.image} title={i.qunTitle} className="goods"/>
+          <p>{i.title}</p><div className="baodi3">
+          <span className="baodi1">猫天</span>
+          <span className="baodi2"> 包递</span></div>
+          <p><span className="count5">${i.originPrice}</span></p></li>
+       		 )):null	
+       	}
+       
+      </PullToRefresh>
+		</div>)
     }
+    componentWillUpdate(){
+    		console.log('about to flash')
+    }
+   
 }
+function genData1() {
+  const dataArr = [];
+  for (let i = 0; i <20; i++) {
+    dataArr.push(i);
+  }
+  return dataArr;
+}
+
+
 export default Adult
+
+
