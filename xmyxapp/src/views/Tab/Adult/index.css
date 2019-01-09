@@ -1,0 +1,52 @@
+ul{
+	list-style: none
+}
+.xiaotu{
+	display: flex;
+	justify-content: space-around;
+}
+.xiaotu p{
+	font-size: 22px;
+	font-weight: bold;
+	color: #444;
+}
+a{
+	text-decoration: none;
+	color: #444;
+	font-size: 16px;
+}
+.ltitle{
+	color: #aaa;
+	font-size: 26px;
+}
+.down1{
+	display: flex;
+	flex-wrap: wrap;
+	color: #555;
+
+}
+.down1 li{
+	width: 336px;
+	height: 500px;
+	font-size: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.down1>li img{
+
+	width: 330px;
+	height: 330px;
+}
+.down1 li .baodi3{
+	height: 15px;
+}
+.down1 li .baodi1{
+	background: #f22;
+	border-radius: 6px;
+	color: #fff;
+	float: left;
+}
+.down1 li .baodi2{
+	float: right;	
+}
