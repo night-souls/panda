@@ -1,0 +1,184 @@
+*{
+	padding:0;
+	margin: 0;
+}
+body{
+	    background: #f5f5f5;
+}
+#Accessories {
+
+    width: 100%;
+
+    
+}
+.head{
+	height: 84px;
+	background: #fdde4a;
+}
+.navlist{
+	width: 100%;
+	height: 220px;
+	background: white;
+
+}
+.navlist-ul{
+	list-style: none;
+}
+.navlist-ul li{
+	float: left;
+	width: 25%;
+	height: 70px;
+	margin-bottom: 10px;
+
+}
+.navlist-ul img{
+
+	height: 50px;
+	background-size: cover;
+	margin: auto 20px; 
+}
+.navlist-ul span{
+	color:#6a6a6a;
+	font-size: 14px;
+}
+.spilt-line{
+	height: 50px;
+	width: 100%;
+	line-height: 50px;
+	text-align: center;
+}
+.line-left{
+	display: inline-block;
+	height: 1px;
+	width: 12%;
+	background:#fdde4a;
+	margin-bottom: 2px;
+}
+.line-right{
+	display: inline-block;
+	height: 1px;
+	width: 12%;
+	background:#fdde4a;
+	margin-bottom: 2px;
+}
+.line-title{
+	font-size: 14px;
+	color:#6a6a6a;
+	display: inline-block;
+	margin:auto 20px;
+}
+.dian-left{
+	height: 5px;
+	width: 5px;
+	display: inline-block;
+	background:#fdde4a;
+	transform: rotate(45deg);
+}
+.dian-right{
+	height: 5px;
+	width: 5px;
+	display: inline-block;
+	background:#fdde4a;
+	transform: rotate(45deg);
+}
+.datalist-ul{
+	list-style: none;
+	width: 100%;
+	justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+}
+.datalist-ul li{
+	width: 49%;
+	height: 277px;
+	float: left;
+	background: white;
+	margin-bottom: 10px;
+	    box-shadow: 0 1px 1px -1px rgba(0,0,0,.5);
+}
+.datalist-ul li img{
+	width: 100%;
+}
+.datalist-ul li .list-datil{
+	color:#877a73;
+	font-size: 12px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 90%;
+	margin:5px;
+	margin-bottom: 0;
+}
+.datalist-ul li .express-detail{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+
+}
+.datalist-ul li .express{
+	float: right;
+	display: block;
+	font-size: 12px;
+	margin-right: 5px;
+	color: #877a73;
+	height: 20px;
+	width: 40px;
+	text-align: center;
+}
+
+.datalist-ul li .taobao{
+	background: #f60;
+	color:white;
+	font-size: 12px;
+	height: 16px;
+	line-height: 16px;
+	width: 30px;
+	display: block;
+	margin-left:10px;
+	border-radius: 3px;
+	margin-top:10px;
+	float: left;
+}
+.datalist-ul li .tianmao{
+	background: #df2b2f;
+	color:white;
+	font-size: 12px;
+	height: 16px;
+	line-height: 16px;
+	width: 30px;
+	display: block;
+	margin-left:10px;
+	border-radius: 3px;
+	margin-top:10px;
+	float: left;
+}
+.datalist-ul li .piric-detail{
+	height: 30px;
+	width: 100%;
+	margin-top: 5px;
+}
+.datalist-ul li .piric-detail .price{
+	color:red;
+	font-size: 16px;
+	font-weight:400;
+	height: 20px;
+	float: left;
+	margin-left:5px;
+	display: block;
+}
+.datalist-ul li .piric-detail .saleNum{
+	color:#877a73;
+	font-size: 12px;
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+
+.datalist-ul li .piric-detail .couponValue{
+	color:red;
+	border:1px solid red;
+	font-size: 12px;
+	display: block;
+	float: right;
+	margin-right: 10px;
+}
