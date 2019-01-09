@@ -4,7 +4,7 @@ function getlist12(id){
 			url:`http://www.xiongmaoyouxuan.com/api/tab/17/feeds?start=${id}&sort=0`,
 	
 		}).then(res=>{
-			console.log(res.data.data.list);
+			
 			return res.data.data;
 	})
 

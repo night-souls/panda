@@ -1,4 +1,4 @@
-import { PullToRefresh, Button } from 'antd-mobile';
+import { PullToRefresh} from 'antd-mobile';
 import React, { Component } from "react"
 import axios from 'axios'
 import {getlist123} from "./model";
@@ -19,28 +19,21 @@ class Underwear extends Component {
 	  this.state = {
 	  	refreshing: false,
      	down: true,
-     	count1234:0,
+     	need:0,
      	data: [],
 	  	underwearli:[],
 	  	underwearlist:[]
 	  };
 	}
 	 componentWillMount(){
-
 			axios({url:"http://www.xiongmaoyouxuan.com/api/tab/16?start=0"}).then(res=>{
-			console.log(res.data.data.categories)
 			this.setState({
 				underwearli:res.data.data.categories
 			})})}
 	   componentDidMount(){
-    getlist123(this.state.count1234)
-			axios({
-			url:"http://www.xiongmaoyouxuan.com/api/tab/16/feeds?start=0&sort=0",
-		}).then(res=>{
-			console.log(res.data.data.list)
-			this.setState({
-				underwearlist:res.data.data.list
-			})
+    		getlist123(this.state.need).then(res=>{
+			this.setState({	underwearlist:res.list})
+			
 	})
     }
     render() {
@@ -85,8 +78,8 @@ class Underwear extends Component {
         direction={ 'up' }
         refreshing={this.state.refreshing}
         onRefresh={() => { 
-        	this.setState({ refreshing: true,count1234:this.state.count1234+=20 });
-    	getlist123(this.state.count1234).then(res=>{this.setState({
+        	this.setState({ refreshing: true,need:this.state.need+=20 });
+    	getlist123(this.state.need).then(res=>{this.setState({
 				refreshing: false,underwearlist:[...this.state.underwearlist,...res.list]
 			})})}}
       >{	
@@ -102,13 +95,8 @@ class Underwear extends Component {
           <p><span className="count5">${i.originPrice}</span></p></li>
        		 )):null	
        	}
-       
       </PullToRefresh>
 		</div>
-
-
-
     }
- 
 }
 export default Underwear

@@ -1,4 +1,4 @@
-import { PullToRefresh, Button } from 'antd-mobile';
+import {PullToRefresh} from 'antd-mobile';
 import React, { Component } from "react"
 import axios from 'axios'
 import './index.scss'
@@ -11,7 +11,7 @@ class Adult extends Component {
 	  this.state = {
 	  	refreshing: false,
      	down: true,
-     	count123:0,
+     	need:0,
      	data: [],
 	  	adultli:[],
 	  	adultlist:[]
@@ -23,7 +23,7 @@ class Adult extends Component {
 			})})
 	}
 	componentDidMount(){
-		getlist12(this.state.count123).then(res=>{
+		getlist12(this.state.need).then(res=>{
 			this.setState({adultlist:res.list
 				
 			})})}
@@ -69,8 +69,8 @@ class Adult extends Component {
 					<span className="baodi1">猫天</span>
 					 <span className="baodi2"> 	包递</span></div>
 					 <p><span className="count5">${item.originPrice}</span></p></li>
-				):null
-       	}
+					):null
+       		}
        </ul>
        </div>
       <PullToRefresh
@@ -79,11 +79,11 @@ class Adult extends Component {
         direction={ 'up' }
         refreshing={this.state.refreshing}
         onRefresh={() => { 
-        	this.setState({ refreshing: true,count123:this.state.count123+=20 });
-    	getlist12(this.state.count123).then(res=>{this.setState({
-				refreshing: false,adultlist:[...this.state.adultlist,...res.list]
+        	this.setState({ refreshing: true,need:this.state.need+=20 });
+    		getlist12(this.state.need).then(res=>{this.setState({
+			refreshing: false,adultlist:[...this.state.adultlist,...res.list]
 			})})}}
-      >{	
+     	  >{	
        	  this.state.data.length?
 		  this.state.data.map(i=> (
           <li key={i.id}
@@ -95,21 +95,15 @@ class Adult extends Component {
           <span className="baodi2"> 包递</span></div>
           <p><span className="count5">${i.originPrice}</span></p></li>
        		 )):null	
-       	}
+       		}
        
       </PullToRefresh>
 		</div>)
     }
-    componentWillUpdate(){
-    		console.log('about to flash')
-    }
-   
 }
 function genData1() {
   const dataArr = [];
-  for (let i = 0; i <20; i++) {
-    dataArr.push(i);
-  }
+  for (let i = 0; i <20; i++){dataArr.push(i)}
   return dataArr;
 }
 

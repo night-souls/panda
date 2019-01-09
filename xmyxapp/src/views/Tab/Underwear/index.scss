@@ -4,38 +4,34 @@
 	height:16.8rem;
 	display: flex;
 	flex-wrap: wrap;
-}
-.top23 li{
-		width: 25%;
-}
-.top23 li p{
+	li{width: 25%;
+	p{
 	font-size: 1.2rem;
 	font-weight: bold;
 	color:#444;
-}
-.top23 li img{
+	}
+	img{
 	width:60%;
 	height:60%;
+	}
+	}	
 }
 .down8{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
-}
-.down8 li{
-
+	li{
+	img{
+	width:100%;
+	height:75%;
+	}
 	width:48%;
 	height:51%;
 	font-size: 1.1rem;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	
-
 }
-.down8 li img{
-	width:100%;
-	height:75%;
 }
 .count5{
 	color: red;
