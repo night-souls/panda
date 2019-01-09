@@ -9,7 +9,8 @@ class Woman extends Component {
         this.state = {
             littleList:[],
             datalist:[],
-            infoList:[]
+            infoList:[],
+            icon:1
         };
     }
     componentDidMount(){
@@ -18,16 +19,10 @@ class Woman extends Component {
             this.setState({
                 littleList:res.categories,
                 datalist:res.items.list,
-               
+                icon:res.items.list.platform
             })
         })
 
-        // infoList().then(res=>{
-        //     console.log(res.list)
-        //     this.setState({
-        //         infoList:res.title
-        //     })
-        // })
 
 
     }
@@ -69,7 +64,11 @@ class Woman extends Component {
                                                 <img src={item.image}/>
                                                 <div className="info">
                                                     <p>{item.title}</p>
-                                                    <span className="ico">{item.platform}</span>
+                                                    {
+                                                        this.state.icon==1?
+                                                    <span className="taobao">淘宝{item.platform}</span>
+                                                    :<span className="tianmao">天猫{item.platform}</span>
+                                                    }
                                                     <span className="bao">包邮</span>
                                                     <div className="d1">                                                                                           
                                                     <span className="price">￥{item.price}</span>

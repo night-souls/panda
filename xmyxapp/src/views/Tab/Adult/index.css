@@ -1,42 +1,40 @@
-ul{
-	list-style: none
-}
+
 .xiaotu{
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
+	list-style: none;
+	width: 100%;
 }
+
 .xiaotu p{
-	font-size: 22px;
+	font-size: 1rem;
 	font-weight: bold;
 	color: #444;
 }
-a{
-	text-decoration: none;
-	color: #444;
-	font-size: 16px;
-}
+
 .ltitle{
 	color: #aaa;
-	font-size: 26px;
+	font-size: 1.1rem;
 }
 .down1{
+	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-around;
 	color: #555;
 
 }
 .down1 li{
-	width: 336px;
-	height: 500px;
-	font-size: 24px;
+	width: 48%;
+	height: 50%;
+	font-size: 1.1rem;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 .down1>li img{
-
-	width: 330px;
-	height: 330px;
+	height: 192px;
 }
 .down1 li .baodi3{
 	height: 15px;

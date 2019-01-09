@@ -70,7 +70,7 @@ class Adult extends Component {
 					<img src={item.image} title={item.qunTitle} className="goods"/>
 					<p>{item.title}</p><div className="baodi3">
 					<span className="baodi1">猫天</span>
-					 <span className="baodi2">包递</span></div>
+					 <span className="baodi2"> 	包递</span></div>
 					 <p><span>${item.originPrice}</span></p></li>
 				):null
        	}
