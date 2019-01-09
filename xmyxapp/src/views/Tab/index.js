@@ -4,7 +4,6 @@ import React, {
 class Tab extends Component {
 	render() {
 		return <div>
-			列表
 			{this.props.children}
 
 		</div>

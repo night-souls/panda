@@ -31,16 +31,16 @@ class Manshoes extends Component {
 
 	}
 	render() {
-		return <div id="hzb_man">
-                    <div className="hzb_up">
-                        <div className="hzb_nav">
-                        <span className="hzb_line"></span>
-                        <span className="hzb_text"></span>
-                        <span className="hzb_con">精选潮流</span>
-                        <span className="hzb_text"></span>
-                        <span className="hzb_line"></span>
+		return <div id="hzb1_man">
+                    <div className="hzb1_up">
+                        <div className="hzb1_nav">
+                        <span className="hzb1_line"></span>
+                        <span className="hzb1_text"></span>
+                        <span className="hzb1_con">精选潮流</span>
+                        <span className="hzb1_text"></span>
+                        <span className="hzb1_line"></span>
                         </div>
-                        <ul id="hzb_list"> 
+                        <ul id="hzb1_list"> 
                                 {
                                     this.state.littleList.map(item=>
                                 <li key={item.id}>
@@ -51,31 +51,31 @@ class Manshoes extends Component {
                         </ul>
                     </div>
         
-                    <div className="hzb_content">
-                            <div className="hzb_down">
-                                <div className="hzb_nav">
-                                    <span className="hzb_line"></span>
-                                    <span className="hzb_text"></span>
-                                     <span className="hzb_con">大家都在逛</span>
-                                    <span className="hzb_text"></span>
-                                    <span className="hzb_line"></span>
+                    <div className="hzb1_content">
+                            <div className="hzb1_down">
+                                <div className="hzb1_nav">
+                                    <span className="hzb1_line"></span>
+                                    <span className="hzb1_text"></span>
+                                     <span className="hzb1_con">大家都在逛</span>
+                                    <span className="hzb1_text"></span>
+                                    <span className="hzb1_line"></span>
                                 </div>
-                                <ul id="hzb_tupian">
+                                <ul id="hzb1_tupian">
                                     {
                                         this.state.datalist.map(item=>
                                             <li key={item.id}>
                                                 <img src={item.image}/>
-                                                <div className="hzb_info">
+                                                <div className="hzb1_info">
                                                     <p>{item.title}</p>
                                                     {
                                                         this.state.icon==1?
-                                                    <span className="hzb_taobao">淘宝{item.platform}</span>
-                                                    :<span className="hzb_tianmao">天猫{item.platform}</span>
+                                                    <span className="hzb1_taobao">淘宝{item.platform}</span>
+                                                    :<span className="hzb1_tianmao">天猫{item.platform}</span>
                                                     }
-                                                    <span className="hzb_bao">包邮</span>
-                                                    <div className="hzb_d1">                                                                                           
-                                                    <span className="hzb_price">￥{item.price}</span>
-                                                    <span className="hzb_num">{item.saleNum}人已买</span>
+                                                    <span className="hzb1_bao">包邮</span>
+                                                    <div className="hzb1_d1">                                                                                           
+                                                    <span className="hzb1_price">￥{item.price}</span>
+                                                    <span className="hzb1_num">{item.saleNum}人已买</span>
                                                     </div>
                                                 </div>
                                             </li>
