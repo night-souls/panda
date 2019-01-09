@@ -7,11 +7,6 @@ import "./index.scss"
 import {
 	getLittle,
 } from './model.js'
-import {
-	PullToRefresh,
-	ListView,
-	Button
-} from 'antd-mobile';
 
 
 
