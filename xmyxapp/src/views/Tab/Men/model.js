@@ -9,8 +9,19 @@ function getLittle() {
 	})
 }
 
+function getMenList() {
+	return axios({
+		url: "http://www.xiongmaoyouxuan.com/api/tab/5?start=0",
+
+	}).then(res => {
+		// console.log(res.data);
+		return res.data.data.items;
+	})
+
+}
 
 
 export {
-	getLittle
+	getLittle,
+	getMenList
 }

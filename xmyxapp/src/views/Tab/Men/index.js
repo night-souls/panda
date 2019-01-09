@@ -1,10 +1,14 @@
 import React, {
 	Component
 } from "react"
+
 import "./index.scss"
+
 import {
-	getLittle
+	getLittle,
+	getMenList
 } from './model.js'
+
 
 class Man extends Component {
 	constructor(props) {
@@ -14,7 +18,10 @@ class Man extends Component {
 			littleList: [],
 			datalist: [],
 			infoList: [],
-			icon: 1
+			icon: 1,
+			menpage: 20,
+			total: 1,
+			menindex: 20
 		};
 	}
 	componentDidMount() {
@@ -27,6 +34,13 @@ class Man extends Component {
 			})
 		})
 
+		// getMenList().then(res => {
+		// 	this.setState({
+		// 		menpage: res.items.list.perpage,
+		// 		total: res.items.list.total,
+		// 		menindex: res.items.list.nextIndex
+		// 	})
+		// })
 
 
 	}
