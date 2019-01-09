@@ -19,12 +19,8 @@ class Adult extends Component {
 	}
 	componentWillMount(){
 		axios({url:`http://www.xiongmaoyouxuan.com/api/tab/17?start=0`}).then(res=>{
-			
-			this.setState({
-				adultli:res.data.data.categories
-			})
-	})
-		
+			this.setState({adultli:res.data.data.categories
+			})})
 	}
 	componentDidMount(){
 		getlist12(this.state.count123).then(res=>{
@@ -117,7 +113,4 @@ function genData1() {
   return dataArr;
 }
 
-
 export default Adult
-
-

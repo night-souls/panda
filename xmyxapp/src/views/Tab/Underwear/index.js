@@ -1,14 +1,26 @@
-
+import { PullToRefresh, Button } from 'antd-mobile';
 import React, { Component } from "react"
 import axios from 'axios'
-import './index.css'
+import {getlist123} from "./model";
+import './index.scss'
 import {NavLink} from "react-router-dom"
+function genData1() {
+  const dataArr = [];
+  for (let i = 0; i <20; i++) {
+    dataArr.push(i);
+  }
+  return dataArr;
+}
 
 class Underwear extends Component {
 	constructor(props) {
 	  super(props);
 	
 	  this.state = {
+	  	refreshing: false,
+     	down: true,
+     	count1234:0,
+     	data: [],
 	  	underwearli:[],
 	  	underwearlist:[]
 	  };
@@ -21,14 +33,9 @@ class Underwear extends Component {
 				underwearli:res.data.data.categories
 			})})}
 	   componentDidMount(){
-    
+    getlist123(this.state.count1234)
 			axios({
 			url:"http://www.xiongmaoyouxuan.com/api/tab/16/feeds?start=0&sort=0",
-			// headers:{
-			// 	'X-Client-Info': '{"a":"3000","ch":"1002","v":"1.0.0","e":"154277371928424093566579"}',
-			// 	'X-Host': 'mall.cfg.common-banner'
-
-			// }
 		}).then(res=>{
 			console.log(res.data.data.list)
 			this.setState({
@@ -72,7 +79,35 @@ class Underwear extends Component {
 				):null
        	}
        </ul>
+             <PullToRefresh
+        damping={60}
+        ref={el => this.ptr = el}
+        direction={ 'up' }
+        refreshing={this.state.refreshing}
+        onRefresh={() => { 
+        	this.setState({ refreshing: true,count1234:this.state.count1234+=20 });
+    	getlist123(this.state.count1234).then(res=>{this.setState({
+				refreshing: false,underwearlist:[...this.state.underwearlist,...res.list]
+			})})}}
+      >{	
+       	  this.state.data.length?
+		  this.state.data.map(i=> (
+          <li key={i.id}
+		  // onClick={this.getinfo.bind(this,item.id)}
+          style={{ textAlign: 'center', padding: 20 }}>
+          <img src={i.image} title={i.qunTitle} className="goods"/>
+          <p>{i.title}</p><div className="baodi3">
+          <span className="baodi1">猫天</span>
+          <span className="baodi2"> 包递</span></div>
+          <p><span className="count5">${i.originPrice}</span></p></li>
+       		 )):null	
+       	}
+       
+      </PullToRefresh>
 		</div>
+
+
+
     }
  
 }
