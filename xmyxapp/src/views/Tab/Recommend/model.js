@@ -3,8 +3,17 @@ function getLunbo() {
     return axios({
         url: "http://www.xiongmaoyouxuan.com/api/tab/1?start=0"
     }).then(res => {
-        console.log(res.data.data.banners)
-        return res.data.data.banners
+        console.log(res.data.data.topList)
+        return res.data.data
     })
 }
-export { getLunbo }
+function getImg() {
+    return axios({
+        url: "http://www.xiongmaoyouxuan.com/api/tab/1?start=0"
+    }).then(res => {
+        console.log(res.data.data.topList)
+        return res.data.data
+    })
+
+}
+export { getLunbo, getImg }

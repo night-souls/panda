@@ -7,7 +7,7 @@ class Index extends Component {
         return (
 
 
-            <div>11111</div>
+            <div></div>
         );
     }
 }

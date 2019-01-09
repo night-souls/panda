@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Swiper from "swiper"
+import "swiper/dist/css/swiper.css"
 import { NavLink } from "react-router-dom"
 import "./index.scss"
 class Navbar extends Component {
@@ -11,22 +12,24 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
+        window.onscroll = this.hanleScroll.bind(this)
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 3.6,
-            spaceBetween: 0,
+            // spaceBetween: 5,
+            freeMode: true,
             centeredSlides: true,
             slideToClickedSlide: true,
-            pagination: {
-                el: '.swiper-scrollba',
-                clickable: true,
-            },
+        // pagination: {
+        //     el: '.swiper-scrollba',
+        //     clickable: true,
+        // },
         });
     }
 
 
     render() {
         return (
-            <div id="navbar">
+            <div id="navbar" className={this.state.isShow ? '' : "hide"}>
 				<div className="search-form">
 					<div className="input-form">
 						<div className="input">
@@ -73,6 +76,21 @@ class Navbar extends Component {
 
 
         )
+    }
+
+
+    hanleScroll() {
+        if ((document.documentElement.scrollTop || document.body.scrollTop) < 10) {
+            //让他显示
+
+            this.setState({
+                isShow: true
+            })
+        } else {
+            this.setState({
+                isShow: false
+            })
+        }
     }
 }
 export default Navbar;
