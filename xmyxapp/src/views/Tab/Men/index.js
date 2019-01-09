@@ -6,8 +6,13 @@ import "./index.scss"
 
 import {
 	getLittle,
-	getMenList
 } from './model.js'
+import {
+	PullToRefresh,
+	ListView,
+	Button
+} from 'antd-mobile';
+
 
 
 class Man extends Component {
@@ -18,10 +23,7 @@ class Man extends Component {
 			littleList: [],
 			datalist: [],
 			infoList: [],
-			icon: 1,
-			// menpage: 20,
-			// total: 1,
-			// menindex: 20
+			icon: 1
 		};
 	}
 	componentDidMount() {
@@ -33,15 +35,6 @@ class Man extends Component {
 				icon: res.items.list.platform
 			})
 		})
-
-		// getMenList().then(res => {
-		// 	this.setState({
-		// 		menpage: res.items.list.perpage,
-		// 		total: res.items.list.total,
-		// 		menindex: res.items.list.nextIndex
-		// 	})
-		// })
-
 
 	}
 	render() {
