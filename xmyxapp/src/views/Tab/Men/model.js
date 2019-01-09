@@ -1,13 +1,9 @@
 import axios from 'axios'
-import {
-	PullToRefresh,
-	ListView,
-	Button
-} from 'antd-mobile'
 
-function getLittle() {
+
+function getLittle(count) {
 	return axios({
-		url: "http://www.xiongmaoyouxuan.com/api/tab/5?start=0"
+		url: `http://www.xiongmaoyouxuan.com/api/tab/5/feeds?start=${count}&sort=0`
 	}).then(res => {
 
 		return res.data.data;
