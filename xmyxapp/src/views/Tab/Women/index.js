@@ -73,6 +73,7 @@ class Woman extends Component {
                                                     <div className="d1">                                                                                           
                                                     <span className="price">￥{item.price}</span>
                                                     <span className="num">{item.saleNum}人已买</span>
+                                                
                                                     </div>
                                                 </div>
                                             </li>

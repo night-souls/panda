@@ -104,6 +104,7 @@
         box-shadow: 0 1px 1px -1px rgba(0,0,0,.5);
         img{
             width: 100%;
+            height:184px;
         }
         .info{
             overflow: hidden;
@@ -147,7 +148,7 @@
             }
             .d1{
                 
-                background-color: #fdde4a;
+               
                 margin-top: 40px;
                 
             .price{
@@ -163,6 +164,16 @@
                 font-size:12px;
                 display: inline-block;
                 line-height: 30px;
+            }
+            .value{
+                color:#f00;
+                float: right;
+                margin-right: 5px;
+                font-size:9px;
+                display: inline-block;
+                margin-top: 5px;
+                border:1px solid #f00;
+  
             }
         }
             

@@ -72,6 +72,11 @@ class Baeuty extends Component {
                                                     <div className="d1">                                                                                           
                                                     <span className="price">￥{item.price}</span>
                                                     <span className="num">{item.saleNum}人已买</span>
+                                                    {
+                                                        item.couponValue==""?
+                                                        <span>{item.couponValue}</span>
+                                                        :<span className="value">{item.couponValue}</span>
+                                                    }
                                                     </div>
                                                 </div>
                                             </li>
