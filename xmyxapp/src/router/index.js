@@ -25,6 +25,7 @@ import Menshoes from "../views/Tab/Menshoes"
 import Child from "../views/Tab/Child"
 import Detail from "../views/Detail"
 import Category from "../views/Category"
+import Recommend from "../views/Tab/Recommend"
 
 const router = (
 <Router>
@@ -33,7 +34,7 @@ const router = (
 			<Route path="/" component={Index}></Route>
 
 				<Route path="/tab" render={() => <Tab>
-				<Route path="/tab/1" component={Index}></Route>
+				<Route path="/tab/1" component={Recommend}></Route>
 				<Route path="/tab/2" component={Women}></Route>
 				<Route path="/tab/3" component={Beauty}></Route>
 				<Route path="/tab/4" component={Accessories}></Route>
