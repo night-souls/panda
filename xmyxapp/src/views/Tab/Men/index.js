@@ -19,9 +19,9 @@ class Man extends Component {
 			datalist: [],
 			infoList: [],
 			icon: 1,
-			menpage: 20,
-			total: 1,
-			menindex: 20
+			// menpage: 20,
+			// total: 1,
+			// menindex: 20
 		};
 	}
 	componentDidMount() {
