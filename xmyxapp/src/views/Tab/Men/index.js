@@ -1,10 +1,19 @@
 import React, {
 	Component
 } from "react"
+
 import "./index.scss"
+
 import {
-	getLittle
+	getLittle,
 } from './model.js'
+import {
+	PullToRefresh,
+	ListView,
+	Button
+} from 'antd-mobile';
+
+
 
 class Man extends Component {
 	constructor(props) {
@@ -26,8 +35,6 @@ class Man extends Component {
 				icon: res.items.list.platform
 			})
 		})
-
-
 
 	}
 	render() {

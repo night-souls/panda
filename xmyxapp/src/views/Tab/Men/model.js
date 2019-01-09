@@ -1,4 +1,9 @@
 import axios from 'axios'
+import {
+	PullToRefresh,
+	ListView,
+	Button
+} from 'antd-mobile'
 
 function getLittle() {
 	return axios({
@@ -12,5 +17,5 @@ function getLittle() {
 
 
 export {
-	getLittle
+	getLittle,
 }
