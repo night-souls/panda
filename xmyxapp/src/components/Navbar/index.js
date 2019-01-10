@@ -14,15 +14,13 @@ class Navbar extends Component {
     componentDidMount() {
         window.onscroll = this.hanleScroll.bind(this)
         var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3.6,
-            // spaceBetween: 5,
-            freeMode: true,
-            centeredSlides: true,
+            slidesPerView: 4,
+            spaceBetween: 0,
             slideToClickedSlide: true,
-        // pagination: {
-        //     el: '.swiper-scrollba',
-        //     clickable: true,
-        // },
+            speed: 2000
+
+
+
         });
     }
 
@@ -44,27 +42,29 @@ class Navbar extends Component {
 					<div className="line"></div>
 				
 				<div className="nav-swipe">
-				  <div className="swiper-container">
-				    <div className="swiper-wrapper swipe-div">
-				    <div className="swiper-slide swiper-slide-prev"></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/2" activeClassName="zlxactive"><span>女装</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/5" activeClassName="zlxactive"><span>男装</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/3" activeClassName="zlxactive"><span>美妆护肤</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/4" activeClassName="zlxactive"><span>配饰</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/13" activeClassName="zlxactive"><span>女鞋</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/19" activeClassName="zlxactive"><span>男鞋</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/10" activeClassName="zlxactive"><span>零食王国</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/24" activeClassName="zlxactive"><span>母婴用品</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/14" activeClassName="zlxactive"><span>箱包</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/15" activeClassName="zlxactive"><span>个人洗漱</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/6" activeClassName="zlxactive"><span>手机周边</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/12" activeClassName="zlxactive"><span>数码家电</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/16" activeClassName="zlxactive"><span>内衣袜子</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/17" activeClassName="zlxactive"><span>成人用品</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/7" activeClassName="zlxactive"><span>日用家居</span></NavLink></div></div>
-				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/11" activeClassName="zlxactive"><span>文体娱乐</span></NavLink></div></div>
+				  <div class="swiper-container">
+				    <div class="swiper-wrapper">
+				      <div class="swiper-slide"><NavLink to="/tab/2" activeClassName="zlxactive">女装</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/5" activeClassName="zlxactive">男装</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/3" activeClassName="zlxactive">美妆</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/4" activeClassName="zlxactive">配饰</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/13" activeClassName="zlxactive">女鞋</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/19" activeClassName="zlxactive">男鞋</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/10" activeClassName="zlxactive">零食</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/24" activeClassName="zlxactive">母婴</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/14" activeClassName="zlxactive">箱包</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/15" activeClassName="zlxactive">洗漱</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/6" activeClassName="zlxactive">周边</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/12" activeClassName="zlxactive">数码</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/16" activeClassName="zlxactive">内衣</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/17" activeClassName="zlxactive">成人</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/7" activeClassName="zlxactive">日用</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/11" activeClassName="zlxactive">文体</NavLink></div>
+
 				    </div>
-				   </div>
+				  
+				  
+				  </div>
 				</div>
 
 			</div>
@@ -80,7 +80,7 @@ class Navbar extends Component {
 
 
     hanleScroll() {
-   // console.log(document.documentElement.scrollTop)
+        // console.log(document.documentElement.scrollTop)
         if ((document.documentElement.scrollTop || document.body.scrollTop) < 10) {
 
 
