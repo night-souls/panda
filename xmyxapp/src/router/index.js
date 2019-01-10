@@ -26,11 +26,13 @@ import Child from "../views/Tab/Child"
 import Detail from "../views/Detail"
 import Category from "../views/Category"
 import Recommend from "../views/Tab/Recommend"
+import store from "../store"import { Provider } from "react-redux"
 const router = (
+<Provider store={store}>
 <Router>
 		<App>
 			
-			<Route path="/" component={Index}></Route>
+			<Switch>
 
 				<Route path="/tab" render={() => <Tab>
 				<Route path="/tab/1" component={Recommend}></Route>
@@ -53,14 +55,12 @@ const router = (
 
 
 
-			</Tab>}>
-
-
-			</Route>
 			<Route path="/detail/:id" component={Detail}></Route>
 			<Route path="/category/:id" component={Category}></Route>
-		
-		
+	
+	
+			<Redirect from="*" to="/tab/1"/>
+			</Switch>		
 
 
 
@@ -79,7 +79,7 @@ const router = (
 
 
 
-
+</Provider>
 )
 export default router;
 
