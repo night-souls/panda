@@ -29,17 +29,17 @@ class Navbar extends Component {
 
     render() {
         return (
-            <div id="navbar" className={this.state.isShow ? '' : "hide"}>
+            <div id="navbar" className={this.state.isShow ? '' : "hide11111"}>
 				<div className="search-form">
 					<div className="input-form">
-						<div className="input">
+						<div className="input1">
 						<p>搜索商品, 发现更多优选</p></div>
 					</div>
 
 				</div>
 				<div className="home-nav">
 					<div className="home">
-						<div>今日推荐</div>
+						<div className="home_1">今日推荐</div>
 					</div>
 					<div className="line"></div>
 				
@@ -47,7 +47,7 @@ class Navbar extends Component {
 				  <div className="swiper-container">
 				    <div className="swiper-wrapper swipe-div">
 				    <div className="swiper-slide swiper-slide-prev"></div>
-				      <div className="swiper-slide"><div className="swipe - item1"><NavLink to="/tab/2" activeClassName="zlxactive"><span>女装</span></NavLink></div></div>
+				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/2" activeClassName="zlxactive"><span>女装</span></NavLink></div></div>
 				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/5" activeClassName="zlxactive"><span>男装</span></NavLink></div></div>
 				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/3" activeClassName="zlxactive"><span>美妆护肤</span></NavLink></div></div>
 				      <div className="swiper-slide"><div className="swipe-item1"><NavLink to="/tab/4" activeClassName="zlxactive"><span>配饰</span></NavLink></div></div>
@@ -80,8 +80,9 @@ class Navbar extends Component {
 
 
     hanleScroll() {
+   // console.log(document.documentElement.scrollTop)
         if ((document.documentElement.scrollTop || document.body.scrollTop) < 10) {
-            //让他显示
+
 
             this.setState({
                 isShow: true
