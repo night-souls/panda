@@ -9,7 +9,7 @@ body{
     width: 100%;  
 }
 .head{
-	height: 64px;
+	height: 84px;
 	background: #fdde4a;
 }
 .navlist{
@@ -93,10 +93,11 @@ body{
 	float: left;
 	background: white;
 	margin-bottom: 10px;
-	    box-shadow: 0 1px 1px -1px rgba(0,0,0,.5);
+	box-shadow: 0 1px 1px -1px rgba(0,0,0,.5);
 }
 .datalist-ul li img{
 	width: 100%;
+	height: 184px;
 }
 .datalist-ul li .list-datil{
 	color:#877a73;
