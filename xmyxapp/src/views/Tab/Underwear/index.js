@@ -4,14 +4,6 @@ import axios from 'axios'
 import {getlist123} from "./model";
 import './index.scss'
 import {NavLink} from "react-router-dom"
-function genData1() {
-  const dataArr = [];
-  for (let i = 0; i <20; i++) {
-    dataArr.push(i);
-  }
-  return dataArr;
-}
-
 class Underwear extends Component {
 	constructor(props) {
 	  super(props);

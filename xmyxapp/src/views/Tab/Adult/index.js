@@ -101,10 +101,5 @@ class Adult extends Component {
 		</div>)
     }
 }
-function genData1() {
-  const dataArr = [];
-  for (let i = 0; i <20; i++){dataArr.push(i)}
-  return dataArr;
-}
 
 export default Adult
