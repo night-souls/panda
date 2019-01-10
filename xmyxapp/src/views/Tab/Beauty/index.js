@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import "./index.scss"
 import {getLittle} from './model.js'
 import {NavLink} from 'react-router-dom'
+import {PullToRefresh} from 'antd-mobile'
 
 
 class Baeuty extends Component {
@@ -12,6 +13,10 @@ class Baeuty extends Component {
             littleList:[],
             datalist:[],
             infoList:[],
+            refreshing:false,
+            down:true,
+            need:0,
+            data:[],
         };
     }
     componentDidMount(){
@@ -58,6 +63,19 @@ class Baeuty extends Component {
                                     <span className="text"></span>
                                     <span className="line"></span>
                                 </div>
+                    <PullToRefresh
+                         damping={60}
+                         ref={el => this.ptr = el}
+                         direction={ 'up' }
+                         refreshing={this.state.refreshing}
+                         onRefresh={() => { 
+                             this.setState({refreshing:true,need:this.state.need+=20 });
+                             getLittle(this.state.need).then(res=>{this.setState({
+                                 refreshing:false,datalist:[...this.state.datalist,...res.items.list]
+                             })})
+                            }
+                        }>
+                        {this.state.datalist.length?
                                 <ul id="tupian">
                                     {
                                         this.state.datalist.map(item=>
@@ -85,6 +103,9 @@ class Baeuty extends Component {
                                         )
                                     }
                                 </ul>
+                                :null
+                                 }
+                            </PullToRefresh>
                             </div>
                     </div>
  </div>

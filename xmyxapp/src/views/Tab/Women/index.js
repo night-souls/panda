@@ -2,8 +2,10 @@ import React, { Component } from "react"
 import "./index.scss"
 import {getLittle} from './model.js'
 import {NavLink} from 'react-router-dom'
+import {PullToRefresh} from 'antd-mobile'
 
-class Woman extends Component {
+
+class Women extends Component {
     constructor(props){
         super(props);
 
@@ -11,6 +13,10 @@ class Woman extends Component {
             littleList:[],
             datalist:[],
             infoList:[],
+            refreshing:false,
+            down:true,
+            need:0,
+            data:[],
          
         };
     }
@@ -40,7 +46,7 @@ class Woman extends Component {
                         <ul id="list"> 
                                 {
                                     this.state.littleList.map(item=>
-                                <li key={item.id}><NavLink to="/tab/1" activeClassName="topli">
+                                <li key={item.id}><NavLink to="/tab/1" replace activeClassName="topli">
                                 <img src={item.imageUrl}/>
                                 <p>{item.title}</p>
                                 </NavLink></li>)
@@ -58,6 +64,20 @@ class Woman extends Component {
                                     <span className="text"></span>
                                     <span className="line"></span>
                                 </div>
+                        <PullToRefresh
+                         damping={60}
+                         ref={el => this.ptr = el}
+                         direction={ 'up' }
+                         refreshing={this.state.refreshing}
+                         onRefresh={() => { 
+                             this.setState({refreshing:true,need:this.state.need+=20 });
+                             getLittle(this.state.need).then(res=>{this.setState({
+                                 refreshing:false,datalist:[...this.state.datalist,...res.items.list]
+                             })})
+                            }
+                        }>
+
+                            {this.state.datalist.length?
                                 <ul id="tupian">
                                     {
                                         this.state.datalist.map(item=>
@@ -81,14 +101,20 @@ class Woman extends Component {
                                         )
                                     }
                                 </ul>
+                                :null
+                                }
+                                </PullToRefresh>
                             </div>
                     </div>
-                    {this.props.children}
+                 
  </div>
     }
+
     handleClick(id){
         console.log(id)
-
+       this.props.history.push(`/tab/2/${id}`)
     }
 }
-export default Woman
+
+
+export default Women
