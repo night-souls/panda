@@ -25,7 +25,6 @@ class Underwear extends Component {
 	   componentDidMount(){
     		getlist123(this.state.need).then(res=>{
 			this.setState({	underwearlist:res.list})
-			
 	})
     }
     render() {
@@ -71,7 +70,7 @@ class Underwear extends Component {
         refreshing={this.state.refreshing}
         onRefresh={() => { 
         	this.setState({ refreshing: true,need:this.state.need+=20 });
-    	getlist123(this.state.need).then(res=>{this.setState({
+    		getlist123(this.state.need).then(res=>{this.setState({
 				refreshing: false,underwearlist:[...this.state.underwearlist,...res.list]
 			})})}}
       >{	
@@ -79,16 +78,19 @@ class Underwear extends Component {
 		  this.state.data.map(i=> (
           <li key={i.id}
 		  // onClick={this.getinfo.bind(this,item.id)}
-          style={{ textAlign: 'center', padding: 20 }}>
+          >
           <img src={i.image} title={i.qunTitle} className="goods"/>
           <p>{i.title}</p><div className="baodi3">
-          <span className="baodi1">猫天</span>
-          <span className="baodi2"> 包递</span></div>
+          <span className="baodi1">天猫</span>
+          <span className="baodi2"> 包邮</span></div>
           <p><span className="count5">${i.originPrice}</span></p></li>
        		 )):null	
        	}
       </PullToRefresh>
 		</div>
+    }
+      componentWillUpdate(){
+    		console.log(this.state.underwearlist)
     }
 }
 export default Underwear

@@ -4,6 +4,11 @@ import axios from 'axios'
 import './index.scss'
 import {getlist12} from "./model";
 import {NavLink} from "react-router-dom"
+import biyuntao from './biyuntao'
+import nanyong from './nanyong'
+import nvyong from './nvyong'
+import qingquneiyi from './qingquneiyi'
+import {Route} from "react-router-dom"
 class Adult extends Component {
 	constructor(props) {
 	  super(props);
@@ -25,29 +30,32 @@ class Adult extends Component {
 	componentDidMount(){
 		getlist12(this.state.need).then(res=>{
 			this.setState({adultlist:res.list
-				
-			})})}
+			})})
+			
+	}
     render() {
         return( <div>
+        	{this.props.children}
         <div>
       	<p className="ltitle">潮流精选</p>
        <ul className="xiaotu">
 	     
-       <li><NavLink to="/biyuntao" activeClassName="biyuntao"><img src={
+       <li><NavLink to="/tab/17/biyuntao" activeClassName="biyuntao" exact  replace><img src={
        	this.state.adultli.length?
        this.state.adultli[0].imageUrl
        	:null
        }/>
       <p>避孕套</p></NavLink></li>
-       <li><NavLink to="/nvyong"  activeClassName="nvyong" ><img src={
+       <li><NavLink to="/tab/17/nvyong"  activeClassName="nvyong" exact  replace><img src={
        	this.state.adultli.length?this.state.adultli[1].imageUrl:null
        }/>
        <p>女用</p></NavLink></li>
-       <li><NavLink to="/nanyong"  activeClassName="nanyong" ><img src={
+       <li><NavLink to="/tab/17/nanyong"  activeClassName="nanyong" exact  replace><img src={
        	this.state.adultli.length?this.state.adultli[2].imageUrl:null
        }/>
        <p>男用</p></NavLink></li>
-       <li><NavLink to="/qingquneiyi"  activeClassName="qingquneiyi" ><img src={
+       <li><NavLink to="/tab/17/qingquneiyi"  activeClassName="qingquneiyi" exact replace>
+        <img src={
        	this.state.adultli.length?this.state.adultli[3].imageUrl:null
        }/>
        <p>情趣内衣</p></NavLink></li>
@@ -56,7 +64,7 @@ class Adult extends Component {
        </ul>
        </div>
        <div>
-       <p className="ltitle">大家都在用</p>
+       <p className="ltitle1">大家都在用</p>
         <ul className="down1">
        		{	
        			this.state.adultlist.length?
@@ -66,8 +74,8 @@ class Adult extends Component {
 					 >
 					<img src={item.image} title={item.qunTitle} className="goods"/>
 					<p>{item.title}</p><div className="baodi3">
-					<span className="baodi1">猫天</span>
-					 <span className="baodi2"> 	包递</span></div>
+					<span className="baodi1">天猫</span>
+					 <span className="baodi2"> 	包邮</span></div>
 					 <p><span className="count5">${item.originPrice}</span></p></li>
 					):null
        		}
@@ -91,8 +99,8 @@ class Adult extends Component {
           style={{ textAlign: 'center', padding: 20 }}>
           <img src={i.image} title={i.qunTitle} className="goods"/>
           <p>{i.title}</p><div className="baodi3">
-          <span className="baodi1">猫天</span>
-          <span className="baodi2"> 包递</span></div>
+          <span className="baodi1">天猫</span>
+          <span className="baodi2"> 包邮</span></div>
           <p><span className="count5">${i.originPrice}</span></p></li>
        		 )):null	
        		}
@@ -100,6 +108,16 @@ class Adult extends Component {
       </PullToRefresh>
 		</div>)
     }
+    componentWillUpdate(){
+        console.log('reflash')
+    }
 }
 
-export default Adult
+const Adult1 =()=><Adult>
+						<Route path="/tab/17/biyuntao" component={biyuntao} exact/>
+						<Route path="/tab/17/nvyong" component={nvyong} exact/>
+						<Route path="/tab/17/nanyong" component={nanyong} exact/>
+						<Route path="/tab/17/qingquneiyi" component={qingquneiyi} exact/>
+				  </Adult>
+
+export {Adult1}
