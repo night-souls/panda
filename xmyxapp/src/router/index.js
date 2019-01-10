@@ -26,8 +26,12 @@ import Child from "../views/Tab/Child"
 import Detail from "../views/Detail"
 import Category from "../views/Category"
 import Recommend from "../views/Tab/Recommend"
+import { Provider } from "react-redux"
+import store from "../store"
+
 
 const router = (
+<Provider store={store}>
 <Router>
 		<App>
 			
@@ -77,7 +81,7 @@ const router = (
 
 
 
-
+</Provider>
 )
 export default router;
 
