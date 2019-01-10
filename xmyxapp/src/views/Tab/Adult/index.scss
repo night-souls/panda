@@ -3,20 +3,27 @@
 	margin-top: 35px;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
 	list-style: none;
 	width: 100%;
+	li{width:24%;
+		img{width:70px}
+    }
 	p{
 	font-size: 1rem;
 	font-weight:bold;
 	color: #444;
 	}
 }
-
-
 .ltitle{
 	color: #aaa;
 	font-size: 1.1rem;
+	margin-top: 87px;
+}
+.ltitle1{
+	margin-top: 25px;
+	color: #aaa;
+	font-size: 1.1rem;
+	
 }
 .down1{
 	list-style: none;

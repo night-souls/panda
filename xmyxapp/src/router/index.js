@@ -20,16 +20,13 @@ import Womenshoes from "../views/Tab/Womenshoes"
 import Luggage from "../views/Tab/Luggage"
 import Wash from "../views/Tab/Wash"
 import Underwear from "../views/Tab/Underwear"
-import Adult from "../views/Tab/Adult"
+import {Adult1} from "../views/Tab/Adult"
 import Menshoes from "../views/Tab/Menshoes"
 import Child from "../views/Tab/Child"
 import Detail from "../views/Detail"
 import Category from "../views/Category"
 import Recommend from "../views/Tab/Recommend"
-import { Provider } from "react-redux"
-import store from "../store"
-
-
+import store from "../store"import { Provider } from "react-redux"
 const router = (
 <Provider store={store}>
 <Router>
@@ -52,15 +49,16 @@ const router = (
 				<Route path="/tab/14" component={Luggage}></Route>
 				<Route path="/tab/15" component={Wash}></Route>
 				<Route path="/tab/16" component={Underwear}></Route>
-				<Route path="/tab/17" component={Adult}></Route>
+				<Route path="/tab/17" render={Adult1}></Route>
 				<Route path="/tab/19" component={Menshoes}></Route>
 				<Route path="/tab/24" component={Child}></Route>
 
 
 
-			</Tab>}></Route>
 			<Route path="/detail/:id" component={Detail}></Route>
 			<Route path="/category/:id" component={Category}></Route>
+	
+	
 			<Redirect from="*" to="/tab/1"/>
 			</Switch>		
 
