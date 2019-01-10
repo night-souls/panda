@@ -26,7 +26,8 @@ import Child from "../views/Tab/Child"
 import Detail from "../views/Detail"
 import Category from "../views/Category"
 import Recommend from "../views/Tab/Recommend"
-import store from "../store"import { Provider } from "react-redux"
+import store from "../store"
+import { Provider } from "react-redux"
 const router = (
 <Provider store={store}>
 <Router>
@@ -54,7 +55,7 @@ const router = (
 				<Route path="/tab/24" component={Child}></Route>
 
 
-
+				</Tab>}></Route>
 			<Route path="/detail/:id" component={Detail}></Route>
 			<Route path="/category/:id" component={Category}></Route>
 	

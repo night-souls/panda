@@ -87,7 +87,7 @@ class Woman extends Component {
  </div>
     }
     handleClick(id){
-        //console.log(id)
+        console.log(id)
 
     }
 }
