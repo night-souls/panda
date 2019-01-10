@@ -3,6 +3,7 @@ import Swiper from "swiper"
 import "swiper/dist/css/swiper.css"
 import { NavLink } from "react-router-dom"
 import "./index.scss"
+import { connect } from "react-redux"
 class Navbar extends Component {
     constructor(props) {
         super(props)
@@ -24,14 +25,22 @@ class Navbar extends Component {
         });
     }
 
+    componentWillUnmount() {
+        window.onscroll = null;
+    }
+
 
     render() {
         return (
-            <div id="navbar" className={this.state.isShow ? '' : "hide11111"}>
+            <div>
+        	{this.props.navbarshow ?
+                <div id="navbar" className={this.state.isShow ? '' : "hide11111"}>
+
 				<div className="search-form">
 					<div className="input-form">
 						<div className="input1">
-						<p>搜索商品, 发现更多优选</p></div>
+						<p>搜索商品, 发现更多优选</p>
+						</div>
 					</div>
 
 				</div>
@@ -44,22 +53,22 @@ class Navbar extends Component {
 				<div className="nav-swipe">
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
-				      <div class="swiper-slide"><NavLink to="/tab/2" activeClassName="zlxactive">女装</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/5" activeClassName="zlxactive">男装</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/3" activeClassName="zlxactive">美妆</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/4" activeClassName="zlxactive">配饰</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/13" activeClassName="zlxactive">女鞋</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/19" activeClassName="zlxactive">男鞋</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/10" activeClassName="zlxactive">零食</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/24" activeClassName="zlxactive">母婴</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/14" activeClassName="zlxactive">箱包</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/15" activeClassName="zlxactive">洗漱</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/6" activeClassName="zlxactive">周边</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/12" activeClassName="zlxactive">数码</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/16" activeClassName="zlxactive">内衣</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/17" activeClassName="zlxactive">成人</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/7" activeClassName="zlxactive">日用</NavLink></div>
-				      <div class="swiper-slide"><NavLink to="/tab/11" activeClassName="zlxactive">文体</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/2" replace  activeClassName="zlxactive">女装</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/5" replace  activeClassName="zlxactive">男装</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/3" replace activeClassName="zlxactive">美妆</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/4" replace activeClassName="zlxactive">配饰</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/13" replace activeClassName="zlxactive">女鞋</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/19" replace activeClassName="zlxactive">男鞋</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/10" replace activeClassName="zlxactive">零食</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/24" replace activeClassName="zlxactive">母婴</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/14" replace activeClassName="zlxactive">箱包</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/15" replace activeClassName="zlxactive">洗漱</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/6" replace activeClassName="zlxactive">周边</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/12" replace activeClassName="zlxactive">数码</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/16" replace activeClassName="zlxactive">内衣</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/17" replace activeClassName="zlxactive">成人</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/7" replace activeClassName="zlxactive">日用</NavLink></div>
+				      <div class="swiper-slide"><NavLink to="/tab/11" replace activeClassName="zlxactive">文体</NavLink></div>
 
 				    </div>
 				  
@@ -71,10 +80,9 @@ class Navbar extends Component {
 
 			<span className="home-nav-sbtn"></span>
 
-
 			</div>
-
-
+                : null}
+			</div>
         )
     }
 
@@ -94,4 +102,8 @@ class Navbar extends Component {
         }
     }
 }
-export default Navbar;
+export default connect((state) => {
+    return {
+        navbarshow: state.navbarReducer
+    }
+})(Navbar);
