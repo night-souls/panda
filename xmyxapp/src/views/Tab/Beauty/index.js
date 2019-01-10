@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import "./index.scss"
 import {getLittle} from './model.js'
+import {NavLink} from 'react-router-dom'
+
 
 class Baeuty extends Component {
     constructor(props){
@@ -38,10 +40,10 @@ class Baeuty extends Component {
                         <ul id="list"> 
                                 {
                                     this.state.littleList.map(item=>
-                                <li key={item.id}>
+                                <li key={item.id} ><NavLink to="/tab/1" activeClassName="topli">
                                 <img src={item.imageUrl}/>
                                 <p>{item.title}</p>
-                                </li>)
+                                </NavLink></li>)
                                 }
                         </ul>
                     </div>
@@ -59,7 +61,7 @@ class Baeuty extends Component {
                                 <ul id="tupian">
                                     {
                                         this.state.datalist.map(item=>
-                                            <li key={item.id}>
+                                            <li key={item.id} onClick={this.handleClick.bind(this,item.id)}>
                                                 <img src={item.image}/>
                                                 <div className="info">
                                                     <p>{item.title}</p>
@@ -86,6 +88,11 @@ class Baeuty extends Component {
                             </div>
                     </div>
  </div>
+    }
+
+    handleClick(id){
+        console.log(this.props);
+        this.props.history.push(`/tab/3/detail/${id}`)
     }
 }
 export default Baeuty

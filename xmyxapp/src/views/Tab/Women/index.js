@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./index.scss"
 import {getLittle} from './model.js'
+import {NavLink} from 'react-router-dom'
 
 class Woman extends Component {
     constructor(props){
@@ -27,7 +28,7 @@ class Woman extends Component {
 
     }
     render() {
-        return <div id="beauty">
+        return <div id="women">
                     <div className="up">
                         <div className="nav">
                         <span className="line"></span>
@@ -39,10 +40,10 @@ class Woman extends Component {
                         <ul id="list"> 
                                 {
                                     this.state.littleList.map(item=>
-                                <li key={item.id}>
+                                <li key={item.id}><NavLink to="/tab/1" activeClassName="topli">
                                 <img src={item.imageUrl}/>
                                 <p>{item.title}</p>
-                                </li>)
+                                </NavLink></li>)
                                 }
                         </ul>
                     </div>
@@ -60,7 +61,7 @@ class Woman extends Component {
                                 <ul id="tupian">
                                     {
                                         this.state.datalist.map(item=>
-                                            <li key={item.id}>
+                                            <li key={item.id} onClick={this.handleClick.bind(this,item.id)}>
                                                 <img src={item.image}/>
                                                 <div className="info">
                                                     <p>{item.title}</p>
@@ -82,7 +83,12 @@ class Woman extends Component {
                                 </ul>
                             </div>
                     </div>
+                    {this.props.children}
  </div>
+    }
+    handleClick(id){
+        //console.log(id)
+
     }
 }
 export default Woman
