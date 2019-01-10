@@ -90,7 +90,7 @@ class Underwear extends Component {
 		</div>
     }
       componentWillUpdate(){
-    		console.log(this.state.underwearlist)
+    	
     }
 }
 export default Underwear

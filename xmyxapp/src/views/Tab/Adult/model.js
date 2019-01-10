@@ -3,8 +3,7 @@ function getlist12(id){
 	return  axios({
 			url:`http://www.xiongmaoyouxuan.com/api/tab/17/feeds?start=${id}&sort=0`,
 	
-		}).then(res=>{
-			
+		}).then(res=>{	
 			return res.data.data;
 	})
 
