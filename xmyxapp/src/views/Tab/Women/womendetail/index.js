@@ -23,7 +23,7 @@ class womenDetail extends Component {
         <li>111</li>
         <li>111</li>
         <li>111</li>
-        <li>111</li>
+        <li>222</li>
         </ul>
 		</div>
     }
