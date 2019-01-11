@@ -15,4 +15,12 @@ function getlist124(id,count){
 	})
 
 }
-export {getlist123,getlist124};
+function getlist125(itemId){
+	return  axios({
+		url:`http://www.xiongmaoyouxuan.com/api/detail?id=${itemId}&normal=1&sa=`
+		}).then(res=>{
+			return res.data.data;
+	})
+
+}
+export {getlist123,getlist124,getlist125};

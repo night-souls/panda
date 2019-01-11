@@ -22,7 +22,10 @@ class UnderwearR extends Component {
 			})})
 			
 	}
-    render() {
+  toDetail(id){
+      this.props.history.push(`/detail/${id}`)
+     }
+  render() {
         return( 
       <div>
        <div >
@@ -30,9 +33,7 @@ class UnderwearR extends Component {
           { 
             this.state.adultlist.length?
             this.state.adultlist.map(item=>
-          <li key={item.id}
-           // onClick={this.getinfo.bind(this,item.id)}
-           >
+          <li key={item.id} onClick={this.toDetail.bind(this,item.id)}>
           <img src={item.image} title={item.qunTitle} className="goods"/>
           <p>{item.title}</p><div className="baodi3">
           <span className="baodi1">天猫</span>
