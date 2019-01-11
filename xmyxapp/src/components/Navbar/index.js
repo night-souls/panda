@@ -105,10 +105,10 @@ class Navbar extends Component {
             <ul className="float-tabs">
             {
 
-                    this.state.datalist.map(item => <NavLink to={`/tab/${item.id}`} replace activeClassName="zlxactive"> <li className="float-tab"  onClick={this.handleHideClick.bind(this)}>
-                    <div>
+                    this.state.datalist.map(item => <NavLink to={`/tab/${item.id}`} replace activeClassName="zlxactive" key={item.id}> <li className="float-tab"  key={item.id} onClick={this.handleHideClick.bind(this)}>
+                    <div key={item.id}>
                         <img src={item.imageUrl}/>
-                        <div>{item.name}</div>
+                        <div key={item.id}>{item.name}</div>
                     </div>
                 </li></NavLink>
                     )}
