@@ -36,3 +36,17 @@
 .count5{
 	color: red;
 }
+.outsideback1{
+	position: absolute;
+	top:15px;
+	left:25px;
+	width:70px;
+	height:25px;
+	background: #fff;
+	color:#222;
+	opacity:.9;
+	z-index:20;
+	font-size:18px;
+	border: 1px solid #ccc
+
+}

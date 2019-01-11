@@ -46,7 +46,7 @@ class Underwear extends Component {
        			this.state.underwearlist.length?
        			this.state.underwearlist.map(item=>
 					<li key={item.id}
-					 // onClick={this.getinfo.bind(this,item.id)}
+					  onClick={this.toDetail.bind(this,item.id)}
 					 >
 					<img src={item.image} title={item.qunTitle}/>
 					<p>{item.title}</p><div></div><div><span className="count5">${item.originPrice}</span></div></li>
@@ -67,6 +67,9 @@ class Underwear extends Component {
       </PullToRefresh>
 		</div>
     }
+     toDetail(id){
+      this.props.history.push(`/detail/${id}`)
+     }
      todong1(id){
         // console.log(this.props.history)
        this.props.history.push(`/tab/16/${id}`)
