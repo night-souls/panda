@@ -1,0 +1,14 @@
+
+.ant-back-top-inner {
+bottom: 135px; 
+width: 50px; 
+height: 50px; 
+right: 8px;
+position: fixed;
+    z-index: 3;
+    bottom: 100px!important;
+
+}
+  .ant-back-top-inner img{
+    	    height: 100%;
+    }

@@ -7,9 +7,9 @@ function getLunbo() {
         return res.data.data
     })
 }
-function getImg() {
+function getImg(id) {
     return axios({
-        url: "http://www.xiongmaoyouxuan.com/api/tab/1/feeds?start=0&sort=0"
+        url: `http://www.xiongmaoyouxuan.com/api/tab/1/feeds?start=${id}&sort=0"`
     }).then(res => {
         console.log(res.data.data.list)
         return res.data.data.list
@@ -17,3 +17,4 @@ function getImg() {
 
 }
 export { getLunbo, getImg }
+
