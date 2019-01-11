@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import {getlist14} from './model'
 import './index.scss'
+import {connect} from "react-redux"
 import Swiper from 'swiper/dist/js/swiper.js'
 import 'swiper/dist/css/swiper.min.css'
 class detail17 extends Component {
@@ -13,6 +14,12 @@ class detail17 extends Component {
       img:[]
 	  };
 	}
+  componentWillMount(){
+    this.props.hide()
+  }
+  componentWillUnmount(){
+    this.props.show()
+  }
 	componentDidMount(){
    
 		getlist14(this.props.match.params.id).then(res=>{
@@ -57,4 +64,11 @@ class detail17 extends Component {
    
 
 }
-export default detail17
+export default connect(
+  null,{
+      show(){return{type:'ShowNavbar',
+      payload:true}},
+      hide(){return{
+        type:'HideNavbar',payload:false
+      }}
+  })(detail17)
