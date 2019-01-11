@@ -11,6 +11,9 @@ import {
     ListView,
     Button
 } from 'antd-mobile'
+import {
+    NavLink
+} from 'react-router-dom'
 
 class Manshoes extends Component {
     constructor(props) {
@@ -64,9 +67,11 @@ class Manshoes extends Component {
                         <ul id="hzb1_list"> 
                                 {
                                     this.state.littleList.map(item=>
-                                <li key={item.id}>
-                                <img src={item.imageUrl}/>
-                                <p>{item.title}</p>
+                                <li key={item.id} onClick={this.handleClick.bind(this,item.url.slice(-4))}>
+                                    <NavLink to="" activeClassName="menli" replace>
+                                        <img src={item.imageUrl}/>
+                                        <p>{item.title}</p>
+                                    </NavLink>
                                 </li>)
                                 }
                         </ul>
@@ -95,26 +100,37 @@ class Manshoes extends Component {
                             })})}}
                         ><ul id="hzb1_tupian">
                         {this.state.datalist.map(item=>
-                            <li key={item.id}>
-                                <img src={item.image}/>
-                                <div className="hzb1_info">
-                                    <p>{item.title}</p>
-                                    {
-                                        this.state.icon==1?
-                                    <span className="hzb1_taobao">淘宝{item.platform}</span>
-                                    :<span className="hzb1_tianmao">天猫{item.platform}</span>
-                                    }
-                                    <span className="hzb1_bao">包邮</span>
-                                    <div className="hzb1_d1">                                                                                           
-                                    <span className="hzb1_price">￥{item.price}</span>
-                                    <span className="hzb1_num">{item.saleNum}人已买</span>
+                            <li key={item.id} onClick={this.handleClick2.bind(this,item.url.slice(-4))}>
+                                <NavLink to="" activeClassName="menList" replace>
+                                    <img src={item.image}/>
+                                    <div className="hzb1_info">
+                                        <p>{item.title}</p>
+                                        {
+                                            this.state.icon==1?
+                                        <span className="hzb1_taobao">淘宝{item.platform}</span>
+                                        :<span className="hzb1_tianmao">天猫{item.platform}</span>
+                                        }
+                                        <span className="hzb1_bao">包邮</span>
+                                        <div className="hzb1_d1">                                                                                           
+                                        <span className="hzb1_price">￥{item.price}</span>
+                                        <span className="hzb1_num">{item.saleNum}人已买</span>
+                                        </div>
                                     </div>
-                                </div>
+                                </NavLink>
                             </li>
                             )}
                         </ul>
                     </PullToRefresh>
  				</div>
+    }
+    handleClick(id) {
+        console.log(id)
+        this.props.history.push(`/category/${id}`)
+    }
+
+    handleClick2(id) {
+        console.log(id)
+        this.props.history.push(`/c/${id}`)
     }
 }
 

@@ -6,6 +6,7 @@ import ReactSwipe from "react-swipe"
 import Swiper from "swiper"
 import "swiper/dist/css/swiper.css"
 import axios from "axios"
+import { PullToRefresh } from 'antd-mobile'
 class Recommend extends Component {
     constructor(props) {
         super(props)
@@ -13,7 +14,11 @@ class Recommend extends Component {
             lunbolist: [],
             imglist: [],
             toplist: [],
-            datalist: []
+            datalist: [],
+            refreshing: false,
+            down: true,
+            need: 0
+
         };
     }
     componentWillMount() {
@@ -146,17 +151,32 @@ class Recommend extends Component {
                 <span className="line"></span>
 
               </div>
-
-
-              
-          </div>
+        </div>
 
           <div className="content">
-            <ul>
+          <PullToRefresh
+            demping={60}
+            ref={el => this.ptr = el}
+            direction={'up'}
+            refreshing={this.state.refreshing}
+            onRefresh={() => {
+                this.setState({
+                    refreshing: true,
+                    need: this.state.need += 20
+                });
+                getImg(this.state.need).then(res => {
+                    this.setState({
+                        refreshing: false,
+                        datalist: [...this.state.datalist, ...res]
+                    })
+                })
+            }}>
+            {this.state.datalist.length ?
+                <ul>
                 {
-            this.state.datalist.map(item => <li key={item.id}>
+                this.state.datalist.map(item => <li key={item.id}>
                 {item.type == 1 ?
-                    <div className="commodity-card" key={item.id}>
+                        <div className="commodity-card" key={item.id}>
 
                         <div className="commodity-container" key={item.id}>
                             <img src={item.image} className="commodity-card-img" key={item.id}/>
@@ -175,7 +195,7 @@ class Recommend extends Component {
                                         <span className="price-strong">{parseInt(item.price)}</span>
                                {(item.price * 10 - parseInt(item.price) * 10) != 0 ?
 
-                        <span className="digit">.{item.price * 10 - parseInt(item.price) * 10} </span> : null}
+                            <span className="digit">.{item.price * 10 - parseInt(item.price) * 10} </span> : null}
                                     </span>
                                 {(item.saleNum * 0.0001) < 1 ? <span className="sale-num">{item.saleNum}人已买</span> : <span className="sale-num">{Math.floor(item.saleNum * 0.0001) + 0.1}万人已买</span>}
                                     
@@ -184,14 +204,15 @@ class Recommend extends Component {
                             </div>
                         </div>
                     </div> : <div className="banner-card" style={{
-                        backgroundImage: `url(${item.image})`
-                    }}></div>}
+                            backgroundImage: `url(${item.image})`
+                        }}></div>}
                 </li>
 
-            )
-            }
+                )
+                }
             </ul>
-              
+                : null}
+              </PullToRefresh>
           </div>
 
 
