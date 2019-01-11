@@ -100,7 +100,7 @@ class Manshoes extends Component {
                             })})}}
                         ><ul id="hzb1_tupian">
                         {this.state.datalist.map(item=>
-                            <li key={item.id} onClick={this.handleClick.bind(this,item.url.slice(-4))}>
+                            <li key={item.id} onClick={this.handleClick2.bind(this,item.url.slice(-4))}>
                                 <NavLink to="" activeClassName="menList" replace>
                                     <img src={item.image}/>
                                     <div className="hzb1_info">
@@ -126,6 +126,11 @@ class Manshoes extends Component {
     handleClick(id) {
         console.log(id)
         this.props.history.push(`/category/${id}`)
+    }
+
+    handleClick2(id) {
+        console.log(id)
+        this.props.history.push(`/c/${id}`)
     }
 }
 
