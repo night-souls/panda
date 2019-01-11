@@ -3,7 +3,7 @@ import "./index.scss"
 import { connect } from "react-redux"
 import getDetailList from './model'
 import ReactSwipe from "react-swipe"
-import Swiper from "swiper"
+
 import "swiper/dist/css/swiper.css"
 
 class womenDetail extends Component {
@@ -53,7 +53,7 @@ class womenDetail extends Component {
 
     render() {
         return <div id="womenDetail">
-        <span className="jump"> {'<'} </span>
+        <span className="jump" onClick={this.handleClick.bind(this)}> {'<'} </span>
 		<ul>
         
         <li>
@@ -77,17 +77,21 @@ class womenDetail extends Component {
             
         </ul>
         <div className="price">
+        <span className="tao">淘</span>
+        <span className="you">包邮</span>
        <p>{this.state.info.title}</p>
-       <span>￥{this.state.info.price}</span>
-       <span>月销量：{this.state.info.saleNum}</span>
+       <span className="money">￥{this.state.info.price}</span>
+       <span className="count">月销量：{this.state.info.saleNum}</span>
        </div>
        <article>
+           <span className="Line1"></span>
            <p>淘宝图文详情</p>
+           <span className="Line2"></span>
        <ul className="down">
            <li>
                {
                    this.state.downList.map(item=>
-                        <img src={item.photo.url}/>
+                        <img src={item.photo.url} key={item.photo.id}/>
                     )
                }
            </li>
@@ -98,6 +102,9 @@ class womenDetail extends Component {
         </footer>
             
 		</div>
+    }
+    handleClick(){
+        this.props.history.go(-1);
     }
 }
  
