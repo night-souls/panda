@@ -38,19 +38,23 @@
 #hzb1_man #hzb1_list{
     display: flex;
     width:100%;
-    height: 175px;
+    height: 350px;
     flex-wrap:wrap;
     li{
         width: 25%;
         list-style: none; 
         background-size:cover;
         margin-bottom: 20px;
-        img{
-            width: 50px;
-        }
-        p{
-            color:hsla(21,8%,49%,.7);
-            font-size:15px;
+        a{
+            text-decoration: none;
+        
+            img{
+                width: 50px;
+            }
+            p{
+                color:hsla(21,8%,49%,.7);
+                font-size:15px;
+            }
         }
     }
 }
@@ -101,70 +105,74 @@
         flex-wrap:wrap;
         background-color: #fff;
         box-shadow: 0 1px 1px -1px rgba(0,0,0,.5);
-        img{
-            width: 100%;
-        }
-        .hzb1_info{
-            overflow: hidden;
-            
-            p{
-            text-indent: 4px;
-            white-space:nowrap;
-            overflow:hidden;
-            text-overflow:ellipsis;
-            color:hsla(21,8%,49%,.7);
-            font-size:14px;
+        a{
+            text-decoration: none;
+                   
+            img{
+                width: 100%;
             }
-            .hzb1_taobao{
-                position: absolute;
-                left:10px;
-                top:230px;
-                width: 20px;
-                height: 10px;
-                background-color: #f00;
-                color: #fff;
-                font-size: 10px;
-                border-radius:3px;
-              }
-              .hzb1_tianmao{
-                position: absolute;
-                left:10px;
-                top:230px;
-                width: 40px;
-                height: 17px;
-                background-color: #f00;
-                color: #fff;
-                font-size: 10px;
-                border-radius:3px;
-              }
-                .hzb1_bao{
-                position: absolute;
-                right:15px;
+            .hzb1_info{
+                overflow: hidden;
+                
+                p{
+                text-indent: 4px;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
                 color:hsla(21,8%,49%,.7);
-                top:230px;
                 font-size:14px;
+                }
+                .hzb1_taobao{
+                    position: absolute;
+                    left:10px;
+                    top:230px;
+                    width: 20px;
+                    height: 10px;
+                    background-color: #f00;
+                    color: #fff;
+                    font-size: 10px;
+                    border-radius:3px;
+                  }
+                  .hzb1_tianmao{
+                    position: absolute;
+                    left:10px;
+                    top:230px;
+                    width: 40px;
+                    height: 17px;
+                    background-color: #f00;
+                    color: #fff;
+                    font-size: 10px;
+                    border-radius:3px;
+                  }
+                    .hzb1_bao{
+                    position: absolute;
+                    right:15px;
+                    color:hsla(21,8%,49%,.7);
+                    top:230px;
+                    font-size:14px;
+                }
+                .hzb1_d1{
+                    
+                    background-color: #fdde4a;
+                    margin-top: 40px;
+                    
+                .hzb1_price{
+                   margin-right: 5px;  
+                    color:#f00;
+                    float:left;
+                    font-size:20px;
+                    display: inline-block;
+                }
+                .hzb1_num{
+                    color:hsla(21,8%,49%,.7);
+                    float:left;
+                    font-size:12px;
+                    display: inline-block;
+                    line-height: 30px;
+                }
             }
-            .hzb1_d1{
                 
-                background-color: #fdde4a;
-                margin-top: 40px;
-                
-            .hzb1_price{
-               margin-right: 5px;  
-                color:#f00;
-                float:left;
-                font-size:20px;
-                display: inline-block;
             }
-            .hzb1_num{
-                color:hsla(21,8%,49%,.7);
-                float:left;
-                font-size:12px;
-                display: inline-block;
-                line-height: 30px;
-            }
-        }
-            
         }
         
     }
