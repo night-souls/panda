@@ -48,7 +48,7 @@ class Adult extends Component {
        {
         this.state.adultli.length?
         this.state.adultli.map(item=>
-        <li onClick={this.todong.bind(this,item.url.slice(-4))}>
+        <li onClick={this.todong.bind(this,item.url.slice(-4))} key={item.id}>
         <img src={item.imageUrl }/>
          <p>{item.title}</p></li>):null
         }
@@ -98,14 +98,6 @@ class Adult extends Component {
     }
 }
 
-
-const Adult1 =(props)=><Adult {...props}>
-            <Switch>
-						<Route path="/tab/17/biyunptao" component={biyuntao}  exact/>
-						<Route path="/tab/17/nvyong" component={nvyong} exact/>
-						<Route path="/tab/17/nanyong" component={nanyong} exact/>
-						<Route path="/tab/17/qingquneiyi" component={qingquneiyi} exact/>
-            </Switch>
-				  </Adult>
+const Adult1 =(props)=><Adult {...props}></Adult>
 
 export {Adult1}

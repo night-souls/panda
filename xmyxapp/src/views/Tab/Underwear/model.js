@@ -7,4 +7,12 @@ function getlist123(id){
 	})
 
 }
-export {getlist123};
+function getlist124(id,count){
+	return  axios({
+		url:`http://www.xiongmaoyouxuan.com/api/category/${id}/items?start=${count}&sort=0`,
+		}).then(res=>{
+			return res.data.data;
+	})
+
+}
+export {getlist123,getlist124};

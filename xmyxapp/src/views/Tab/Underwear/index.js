@@ -31,24 +31,14 @@ class Underwear extends Component {
         return <div>
         <p className="ltitle">潮流精选</p>
        <ul className="top23">
-       <li><NavLink to="/wenxiong" activeClassName="wenxiong"><img src={
-       	this.state.underwearli.length?this.state.underwearli[0].imageUrl:null}/><p>文胸</p>
-       	</NavLink></li>
-       <li><NavLink to="/nvshineiku"  activeClassName="nvshineiku" ><img src={
-       	this.state.underwearli.length?this.state.underwearli[1].imageUrl:null}/><p>女士内裤</p>
-       	</NavLink></li>
-       <li><NavLink to="/shuiyi"  activeClassName="shuiyi" ><img src={
-       	this.state.underwearli.length?this.state.underwearli[2].imageUrl:null}/><p>睡衣</p>
-       	</NavLink></li>
-       <li><NavLink to="/wazi"  activeClassName="wazi" ><img src={
-       	this.state.underwearli.length?this.state.underwearli[3].imageUrl:null}/><p>袜子</p>
-       	</NavLink></li>
-       <li><NavLink to="/dadi"  activeClassName="dadi" ><img src={
-       	this.state.underwearli.length?this.state.underwearli[4].imageUrl:null}/><p>打底</p>
-       	</NavLink></li>
-       <li><NavLink to="/nanshineiku"  activeClassName="nanshineiku" ><img src={
-       	this.state.underwearli.length?this.state.underwearli[5].imageUrl:null}/><p>男士内裤</p>
-       	</NavLink></li>
+       {
+        this.state.underwearli.length?
+        this.state.underwearli.map(item=>
+        <li onClick={this.todong1.bind(this,item.url.slice(-4))} key={item.id}>
+        <img src={item.imageUrl }/>
+         <p>{item.title}</p></li>):null
+        }
+
        </ul>
        <p className="ltitle">大家都在用</p>
        <ul className="down8">
@@ -76,6 +66,10 @@ class Underwear extends Component {
       >
       </PullToRefresh>
 		</div>
+    }
+     todong1(id){
+        // console.log(this.props.history)
+       this.props.history.push(`/tab/16/${id}`)
     }
       componentWillUpdate(){
     	

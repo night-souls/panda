@@ -22,6 +22,7 @@ import Womenshoes from "../views/Tab/Womenshoes"
 import Luggage from "../views/Tab/Luggage"
 import Wash from "../views/Tab/Wash"
 import Underwear from "../views/Tab/Underwear"
+import UnderwearR from "../views/Tab/Underwear/active"
 import {Adult1} from "../views/Tab/Adult"
 import ActiveR from "../views/Tab/Adult/active"
 import Menshoes from "../views/Tab/Menshoes"
@@ -54,7 +55,8 @@ const router = (
 				<Route path="/tab/13" component={Womenshoes}></Route>
 				<Route path="/tab/14" component={Luggage}></Route>
 				<Route path="/tab/15" component={Wash}></Route>
-				<Route path="/tab/16" component={Underwear}></Route>
+				<Route path="/tab/16" component={Underwear} exact></Route>
+				<Route path="/tab/16/:id" component={UnderwearR} exact></Route>
 				<Route path="/tab/17" render={Adult1} exact></Route>
 				<Route path="/tab/17/:id" component={ActiveR} exact></Route>
 				<Route path="/tab/19" component={Menshoes}></Route>
