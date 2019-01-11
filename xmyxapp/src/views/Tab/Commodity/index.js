@@ -2,11 +2,11 @@ import React, { Component } from "react"
 import "./index.scss"
 import {getlist} from "./model";
 import {NavLink} from "react-router-dom"
-import { PullToRefresh} from 'antd-mobile'
+import { PullToRefresh,	ListView,Button} from 'antd-mobile'
 class Commodity extends Component {
 	constructor(props) {
 	  super(props);
-	
+	 
 	  this.state = {
 	  	navlist:[], 
 	  	datalist:[],
@@ -41,9 +41,11 @@ class Commodity extends Component {
 	        	</div>
 	     		<ul className="navlist-ul">
 	     			{this.state.navlist.map(item=>
-	     				<li key={item.id}>
+	     				<li key={item.id}onClick={this.handleClick.bind(this,item.url.slice(-4))}>
+	     				<NavLink to="" activeClassName="menli" replace>
 	     				<img src={item.imageUrl}/>
 	     				<span>{item.title}</span>
+	     				</NavLink>
 	     			</li>
 	     			)}	     				
 	     		</ul>
@@ -101,5 +103,9 @@ class Commodity extends Component {
   	</PullToRefresh>
 </div>
   }
+  handleClick(id) {
+		console.log(id)
+		this.props.history.push(`/category/${id}`)
+	}
 }
 export default Commodity
