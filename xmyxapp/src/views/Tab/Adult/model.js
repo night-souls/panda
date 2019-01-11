@@ -19,5 +19,15 @@ function getlist13(itemId,need){
 	})
 
 }
+function getlist14(itemId){
+	return  axios({
+		url:`http://www.xiongmaoyouxuan.com/api/detail?id=${itemId}&normal=1&sa=`,
+			
+		}).then(res=>{	
+			
+			return res.data.data;
+	})
 
-export {getlist12,getlist13};
+}
+
+export {getlist12,getlist13,getlist14};

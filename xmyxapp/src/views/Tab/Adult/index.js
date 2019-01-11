@@ -2,12 +2,8 @@ import {PullToRefresh} from 'antd-mobile';
 import React, { Component } from "react"
 import axios from 'axios'
 import './index.scss'
-import {getlist12} from "./model";
+import {getlist12,getlist14} from "./model";
 import {NavLink} from "react-router-dom"
-import biyuntao from './biyuntao'
-import nanyong from './nanyong'
-import nvyong from './nvyong'
-import qingquneiyi from './qingquneiyi'
 import {Route,Switch} from "react-router-dom"
 class Adult extends Component {
 	constructor(props) {
@@ -29,8 +25,6 @@ class Adult extends Component {
 
     })
   }
-	
-	
 	componentDidMount(){
 
       //setState第二个参数是属性对象props
@@ -61,7 +55,7 @@ class Adult extends Component {
             this.state.adultlist.length?
             this.state.adultlist.map(item=>
           <li key={item.id}
-           // onClick={this.getinfo.bind(this,item.id)}
+           onClick={this.todetail.bind(this,item.id)}
            >
           <img src={item.image} title={item.qunTitle} className="goods"/>
           <p>{item.title}</p><div className="baodi3">
@@ -91,6 +85,9 @@ class Adult extends Component {
     }
     componentWillUnmount(){
    
+    }
+    todetail(id){
+      this.props.history.push(`/tab/detail17/${id}`)
     }
     todong(id){
         // console.log(this.props.history)

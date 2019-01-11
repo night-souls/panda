@@ -16,7 +16,7 @@ class Navbar extends Component {
     }
     componentWillMount() {
         getList().then(res => {
-            console.log(res)
+         
             this.setState({
                 datalist: res
             })
@@ -127,7 +127,7 @@ class Navbar extends Component {
         this.setState({
             clickShow: true
         }, function() {
-            console.log(this.state.clickShow)
+  
         })
     }
     handleShowClick() {

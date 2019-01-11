@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {getlist12,getlist13} from './model'
+import {getlist12,getlist13,getlist14} from './model'
 import './index.scss'
 import {PullToRefresh} from 'antd-mobile';
 class ActiveR extends Component {
@@ -18,6 +18,7 @@ class ActiveR extends Component {
 
 		getlist13(this.props.match.params.id).then(res=>{
 			// meets a challenge point
+        
 			this.setState({adultlist:res.items.list
 			})})
 			
