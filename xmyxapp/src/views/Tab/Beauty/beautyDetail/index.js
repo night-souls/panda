@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./index.scss"
 import { connect } from "react-redux"
-class womenDetail extends Component {
+class beautyDetail extends Component {
     constructor(props) {
         super(props);
     }
@@ -16,7 +16,7 @@ class womenDetail extends Component {
 
 
     render() {
-        return <div id="womenDetail">
+        return <div id="beautyDetail">
 		<ul>
         <li>111</li>
         <li>111</li>
@@ -46,4 +46,4 @@ export default connect(null, {
 
 
 
-})(womenDetail)
+})(beautyDetail)
