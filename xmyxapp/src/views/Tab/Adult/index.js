@@ -65,7 +65,7 @@ class Adult extends Component {
           ):null
           }
       <PullToRefresh
-        damping={60}
+        damping={50}
         ref={el => this.ptr = el}
         direction={ 'up' }
         refreshing={this.state.refreshing}
