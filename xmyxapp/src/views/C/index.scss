@@ -1,0 +1,88 @@
+*{
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+
+#hzb2_man #hzb2_tupian{
+    margin-top:95px;
+    display: flex;
+    width:100%;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    li{
+        position: relative;
+        width: 49%;
+        height: 310px;
+        margin-bottom: 8px;
+        flex-wrap:wrap;
+        background-color: #fff;
+        box-shadow: 0 1px 1px -1px rgba(0,0,0,.5);
+        img{
+            width: 100%;
+        }
+        .hzb2_info{
+            overflow: hidden;
+            
+            p{
+            text-indent: 4px;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            color:hsla(21,8%,49%,.7);
+            font-size:14px;
+            }
+            .hzb2_taobao{
+                position: absolute;
+                left:10px;
+                top:225px;
+                width: 50px;
+                height: 20px;
+                background-color: #f00;
+                color: #fff;
+                font-size: 15px;
+                border-radius:3px;
+              }
+              .hzb2_tianmao{
+                position: absolute;
+                left:10px;
+                top:230px;
+                width: 40px;
+                height: 17px;
+                background-color: #f00;
+                color: #fff;
+                font-size: 10px;
+                border-radius:3px;
+              }
+                .hzb2_bao{
+                position: absolute;
+                right:15px;
+                color:hsla(21,8%,49%,.7);
+                top:225px;
+                font-size:14px;
+            }
+            .hzb2_d1{
+                background-color: #fdde4a;
+                margin-top: 50px;
+                
+            .hzb2_price{
+                margin-left:10px;
+                margin-right: 30px;  
+                color:#f00;
+                float:left;
+                font-size:20px;
+                display: inline-block;
+            }
+            .hzb2_num{
+                color:hsla(21,8%,49%,.7);
+                float:left;
+                font-size:12px;
+                display: inline-block;
+                line-height: 30px;
+            }
+        }
+            
+        }
+        
+    }
+}
