@@ -8,7 +8,9 @@ import Index from "../views/index"
 import React from "react"
 import Tab from "../views/Tab"
 import Women from "../views/Tab/Women"
-import Beauty from "../views/Tab/Beauty"
+import womenDetail from "../views/Tab/Women/womenDetail/index"
+import Beauty from "../views/Tab/Beauty" 
+import beautyDetail from "../views/Tab/Beauty/beautyDetail/index" 
 import Accessories from "../views/Tab/Accessories"
 import Men from "../views/Tab/Men"
 import Mobile from "../views/Tab/Mobile"
@@ -38,8 +40,10 @@ const router = (
 
 				<Route path="/tab" render={() => <Tab>
 				<Route path="/tab/1" component={Recommend}></Route>
-				<Route path="/tab/2" component={Women}></Route>
-				<Route path="/tab/3" component={Beauty}></Route>
+				<Route path="/tab/2" component={Women} exact></Route>
+				<Route path="/tab/2/:id" component={womenDetail} exact></Route>
+				<Route path="/tab/3" component={Beauty} exact></Route>
+				<Route path="/tab/3/:id" component={beautyDetail} exact></Route>
 				<Route path="/tab/4" component={Accessories}></Route>
 				<Route path="/tab/5" component={Men}></Route>
 				<Route path="/tab/6" component={Mobile}></Route>

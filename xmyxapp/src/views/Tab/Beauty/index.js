@@ -113,7 +113,7 @@ class Baeuty extends Component {
 
     handleClick(id){
         console.log(this.props);
-        this.props.history.push(`/tab/3/detail/${id}`)
+        this.props.history.push(`/tab/3/${id}`)
     }
 }
 export default Baeuty
