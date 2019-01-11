@@ -73,7 +73,7 @@ class Category extends Component {
 								refreshing: false,datalist:[...this.state.datalist,...res.items.list]
 							})})}}
 				    	><ul id="hzb2_tupian">{this.state.datalist.map(item=>
-					        <li key={item.id} onClick={this.handleClick.bind(this,item.id)}>
+					        <li key={item.id} onClick={this.handleClick.bind(this,item.url.slice(-7))}>
 					            <img src={item.image}/>
 					            <div className="hzb2_info">
 					                <p>{item.title}</p>
@@ -95,8 +95,8 @@ class Category extends Component {
 				</div>
 	}
 	handleClick(id) {
-		// console.log(id)
-		// this.props.history.push(`/category/${id}`)
+		console.log(id)
+		this.props.history.push(`/c/${id}`)
 	}
 }
 export default Category
