@@ -16,7 +16,6 @@ class Navbar extends Component {
     }
     componentWillMount() {
         getList().then(res => {
-            console.log(res)
             this.setState({
                 datalist: res
             })
