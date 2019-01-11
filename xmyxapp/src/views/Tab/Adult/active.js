@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {getlist12} from './model'
+import {getlist12,getlist13} from './model'
 import './index.scss'
 import {PullToRefresh} from 'antd-mobile';
 class ActiveR extends Component {
@@ -11,14 +11,14 @@ class ActiveR extends Component {
      	down: true,
      	need:0,
      	data: [],
-	  	adultli:[],
 	  	adultlist:[]
 	  };
 	}
 	componentDidMount(){
-		getlist12(this.state.need).then(res=>{
-			console.log(res)
-			this.setState({adultlist:res.list
+
+		getlist13(this.props.match.params.id).then(res=>{
+			// meets a challenge point
+			this.setState({adultlist:res.items.list
 			})})
 			
 	}
@@ -47,22 +47,10 @@ class ActiveR extends Component {
         refreshing={this.state.refreshing}
         onRefresh={() => { 
           this.setState({ refreshing: true,need:this.state.need+=20 });
-        getlist12(this.state.need).then(res=>{this.setState({
-      refreshing: false,adultlist:[...this.state.adultlist,...res.list]
-      })})}}
-        >{  
-          this.state.data.length?
-      this.state.data.map(i=> (
-          <li key={i.id}
-      // onClick={this.getinfo.bind(this,item.id)}
-          style={{ textAlign: 'center', padding: 20 }}>
-          <img src={i.image} title={i.qunTitle} className="goods"/>
-          <p>{i.title}</p><div className="baodi3">
-          <span className="baodi1">天猫</span>
-          <span className="baodi2"> 包邮</span></div>
-          <p><span className="count5">${i.originPrice}</span></p></li>
-           )):null  
-          }
+        getlist13(this.props.match.params.id,this.state.need).then(res=>{this.setState({
+      refreshing: false,adultlist:[...this.state.adultlist,...res.items.list]
+      })})}} >
+       
       </PullToRefresh>
        </ul>
        </div>

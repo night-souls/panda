@@ -73,19 +73,7 @@ class Underwear extends Component {
     		getlist123(this.state.need).then(res=>{this.setState({
 				refreshing: false,underwearlist:[...this.state.underwearlist,...res.list]
 			})})}}
-      >{	
-       	  this.state.data.length?
-		  this.state.data.map(i=> (
-          <li key={i.id}
-		  // onClick={this.getinfo.bind(this,item.id)}
-          >
-          <img src={i.image} title={i.qunTitle} className="goods"/>
-          <p>{i.title}</p><div className="baodi3">
-          <span className="baodi1">天猫</span>
-          <span className="baodi2"> 包邮</span></div>
-          <p><span className="count5">${i.originPrice}</span></p></li>
-       		 )):null	
-       	}
+      >
       </PullToRefresh>
 		</div>
     }

@@ -24,13 +24,16 @@ class Adult extends Component {
 	  };
 	}
 	componentWillMount(){
-		axios({url:`http://www.xiongmaoyouxuan.com/api/tab/17?start=0`}).then(res=>{
-      console.log(res.data.data.categories);
-			this.setState({adultli:res.data.data.categories
-			})})
-	}
+      axios({url:`http://www.xiongmaoyouxuan.com/api/tab/17?start=0`}).then(res=>{
+      this.setState({adultli:res.data.data.categories})
+
+    })
+  }
+	
+	
 	componentDidMount(){
-    console.log(this.props)
+
+      //setState第二个参数是属性对象props
 		getlist12(this.state.need).then(res=>{
 			this.setState({adultlist:res.list
 			})})
@@ -39,30 +42,19 @@ class Adult extends Component {
     render() {
         return( 
       <div>
-      	{/*{this.props.children}  */}
-        <div  className={this.state.isShow?'hidediv':''}>
+        <div>
         <p className="ltitle">潮流精选</p>
        <ul className="xiaotu">
-       
-       <li onClick={this.state.adultli.length?
-        this.todong.bind(this,this.state.adultli[0].id):null}><img src={
-        this.state.adultli.length?this.state.adultli[0].imageUrl:null }/>
-      <p>避孕套</p></li>
-      <li onClick={this.state.adultli.length?
-        this.todong.bind(this,this.state.adultli[1].id):null}><img src={
-        this.state.adultli.length?this.state.adultli[1].imageUrl:null }/>
-       <p>女用</p></li>
-       <li onClick={this.state.adultli.length?
-        this.todong.bind(this,this.state.adultli[2].id):null}><img src={
-        this.state.adultli.length?this.state.adultli[2].imageUrl:null }/>
-       <p>男用</p></li>
-       <li><NavLink to="/tab/17/qingquneiyi" replace onClick={this.gai.bind(this)}>
-        <img src={
-        this.state.adultli.length?this.state.adultli[3].imageUrl:null }/>
-       <p>情趣内衣</p></NavLink></li>
-       </ul>
-       </div>
-       <div className={this.state.isShow?'hidediv':''}>
+       {
+        this.state.adultli.length?
+        this.state.adultli.map(item=>
+        <li onClick={this.todong.bind(this,item.url.slice(-4))}>
+        <img src={item.imageUrl }/>
+         <p>{item.title}</p></li>):null
+        }
+        </ul>
+        </div>
+       <div >
        <p className="ltitle1">大家都在用</p>
         <ul className="down1">
           { 
@@ -88,36 +80,20 @@ class Adult extends Component {
         getlist12(this.state.need).then(res=>{this.setState({
       refreshing: false,adultlist:[...this.state.adultlist,...res.list]
       })})}}
-        >{  
-          this.state.data.length?
-      this.state.data.map(i=> (
-          <li key={i.id}
-      // onClick={this.getinfo.bind(this,item.id)}
-          style={{ textAlign: 'center', padding: 20 }}>
-          <img src={i.image} title={i.qunTitle} className="goods"/>
-          <p>{i.title}</p><div className="baodi3">
-          <span className="baodi1">天猫</span>
-          <span className="baodi2"> 包邮</span></div>
-          <p><span className="count5">${i.originPrice}</span></p></li>
-           )):null  
-          }
-       
+        >
       </PullToRefresh>
        </ul>
        </div>
 		</div>)
     }
     componentWillUpdate(){
-        console.log('reflash')
+     
     }
     componentWillUnmount(){
    
     }
-    gai(){
-      this.setState({isShow:true})   
-    }
     todong(id){
-      console.log(this.props)
+        // console.log(this.props.history)
        this.props.history.push(`/tab/17/${id}`)
     }
 }
