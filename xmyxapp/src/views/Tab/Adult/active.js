@@ -14,6 +14,9 @@ class ActiveR extends Component {
 	  	adultlist:[]
 	  };
 	}
+    todetail(id){
+      this.props.history.push(`/tab/detail17/${id}`)
+    }
 	componentDidMount(){
 
 		getlist13(this.props.match.params.id).then(res=>{
@@ -31,9 +34,8 @@ class ActiveR extends Component {
           { 
             this.state.adultlist.length?
             this.state.adultlist.map(item=>
-          <li key={item.id}
-           // onClick={this.getinfo.bind(this,item.id)}
-           >
+          <li key={item.id} onClick={this.todetail.bind(this,item.id)}>
+           
           <img src={item.image} title={item.qunTitle} className="goods"/>
           <p>{item.title}</p><div className="baodi3">
           <span className="baodi1">天猫</span>

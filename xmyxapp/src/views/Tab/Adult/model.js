@@ -17,14 +17,12 @@ function getlist13(itemId,need){
 			
 			return res.data.data;
 	})
-
 }
 function getlist14(itemId){
 	return  axios({
 		url:`http://www.xiongmaoyouxuan.com/api/detail?id=${itemId}&normal=1&sa=`,
 			
-		}).then(res=>{	
-			
+		}).then(res=>{
 			return res.data.data;
 	})
 
