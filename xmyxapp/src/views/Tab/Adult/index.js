@@ -3,6 +3,7 @@ import 'antd-mobile/dist/antd-mobile.css'
 import React, { Component } from "react"
 import axios from 'axios'
 import './index.scss'
+import ReactDOM from 'react-dom'
 import { getlist12, getlist14 } from "./model";
 import { NavLink } from "react-router-dom"
 import { Route, Switch } from "react-router-dom"
@@ -17,10 +18,14 @@ class Adult extends Component {
             data: [],
             adultli: [],
             adultlist: [],
-            isShow: false
+            isShow: false,
+            height: document.documentElement.clientHeight,
         };
     }
-    componentWillMount() {
+
+      componentWillMount() {
+
+        
         axios({
             url: `http://www.xiongmaoyouxuan.com/api/tab/17?start=0`
         }).then(res => {
@@ -31,10 +36,12 @@ class Adult extends Component {
         })
     }
     componentDidMount() {
-
+        console.log(ReactDOM.findDOMNode(this.lv))
+        const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
         //setState第二个参数是属性对象props
         getlist12(this.state.need).then(res => {
             this.setState({
+                height: hei,
                 adultlist: res.list
             })
         })
@@ -61,8 +68,12 @@ class Adult extends Component {
                 <ul>
                
               <PullToRefresh
-                    damping={60}
-                    ref={el => this.ptr = el}
+                    damping={50}
+                     style={{
+                        height: this.state.height,
+                        overflow: 'auto', 
+                    }}
+                     ref={el => this.lv = el}
                     direction={ 'up' }
                     refreshing={this.state.refreshing}
                     onRefresh={() => {
@@ -127,6 +138,7 @@ class Adult extends Component {
        </div>
     </div>)
     }
+
     toDetail(id) {
         this.props.history.push(`/tab/detail17/${id}`)
     }
