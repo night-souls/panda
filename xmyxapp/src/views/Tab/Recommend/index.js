@@ -41,7 +41,7 @@ class Recommend extends Component {
     }
     componentDidUpdate() {
 
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.zlx', {
             slidesPerView: 3,
             spaceBetween: 30,
             freeMode: true,
@@ -113,7 +113,7 @@ class Recommend extends Component {
                 <a href="javascript:;" className="right">查看全部></a>
               </div>
               <div className="top-swipe">
-                      <div className="swiper-container">
+                      <div className="swiper-container zlx">
                     <div className="swiper-wrapper">
                     {
             this.state.toplist.map(item => <div className="swiper-slide" key={item.id}>

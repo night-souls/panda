@@ -25,7 +25,7 @@ class Navbar extends Component {
     componentDidMount() {
 
         window.onscroll = this.hanleScroll.bind(this)
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.zzz', {
             slidesPerView: 4,
             spaceBetween: 0,
             slideToClickedSlide: true,
@@ -36,7 +36,7 @@ class Navbar extends Component {
         });
     }
     componentDidUpdate() {
-        var swiper = new Swiper('.swiper-container', {
+        var swiper = new Swiper('.zzz', {
             slidesPerView: 4,
             spaceBetween: 0,
             slideToClickedSlide: true,
@@ -75,7 +75,7 @@ class Navbar extends Component {
                     <div className="line"></div>
                 
                 <div className="nav-swipe">
-                  <div className="swiper-container">
+                  <div className="swiper-container zzz">
                     <div className="swiper-wrapper">
                       <div className="swiper-slide"><NavLink to="/tab/2" replace  activeClassName="zlxactive">女装</NavLink></div>
                       <div className="swiper-slide"><NavLink to="/tab/5" replace  activeClassName="zlxactive">男装</NavLink></div>
