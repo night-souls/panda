@@ -34,7 +34,9 @@ import C from "../views/C"
 import Recommend from "../views/Tab/Recommend"
 import store from "../store"
 import Search from "../views/Tab/search"
+import Result from "../views/Result"
 import { Provider } from "react-redux"
+
 const router = (
 <Provider store={store}>
 <Router>
@@ -73,6 +75,7 @@ const router = (
 			<Route path="/category/:id" component={Category}></Route>
 			<Route path="/c/:id" component={C}></Route>
 			<Route path="/search" component={Search}></Route>
+			<Route path="/s/:id" component={Result}></Route>
 	
 			<Redirect from="*" to="/tab/1"/>
 			</Switch>		
