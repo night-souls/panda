@@ -46,7 +46,8 @@ class Women extends Component {
                         <ul id="list"> 
                                 {
                                     this.state.littleList.map(item=>
-                                <li key={item.id}><NavLink to="/tab/1" replace activeClassName="topli">
+                                <li key={item.id} onClick={this.handleClick2.bind(this,item.url.slice(-4))}>
+                                <NavLink to="" replace activeClassName="topli">
                                 <img src={item.imageUrl}/>
                                 <p>{item.title}</p>
                                 </NavLink></li>)
@@ -113,6 +114,9 @@ class Women extends Component {
     handleClick(id){
         console.log(id)
        this.props.history.push(`/tab/2/${id}`)
+    }
+    handleClick2(id){
+        this.props.history.push(`/category/${id}`)
     }
 }
 

@@ -73,7 +73,7 @@ class Accessories extends Component {
  		 
           	<ul className="datalist-ul">
  	     			{this.state.datalist.map(item=>
- 	     				<li key={item.id}>
+ 	     				<li key={item.id} onClick={this.handleClick2.bind(this,item.id)}>
  	     				<img src={item.image}/>
  	     				<div className="list-datil">
  	     					{item.title}
@@ -107,6 +107,10 @@ class Accessories extends Component {
 		console.log(id)
 		this.props.history.push(`/category/${id}`)
 	}
+	    handleClick2(id){
+        console.log(id)
+       this.props.history.push(`/tab/4/${id}`)
+    }
 }
 
 export default Accessories
