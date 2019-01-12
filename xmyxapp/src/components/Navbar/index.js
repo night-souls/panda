@@ -23,6 +23,7 @@ class Navbar extends Component {
         })
     }
     componentDidMount() {
+
         window.onscroll = this.hanleScroll.bind(this)
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 4,
@@ -34,18 +35,30 @@ class Navbar extends Component {
 
         });
     }
+    componentDidUpdate() {
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            spaceBetween: 0,
+            slideToClickedSlide: true,
+            speed: 2000
+
+
+
+        });
+
+    }
 
     componentWillUnmount() {
         window.onscroll = null;
     }
 
 
-    render() {
+    render(props1) {
         return (
-            <div>
+            <div >
             {this.props.navbarshow ?
                 <div id="navbar" className={this.state.isShow ? '' : "hide11111"}>
-
+            <a href="/#/search">
                 <div className="search-form">
                     <div className="input-form">
                         <div className="input1">
@@ -54,6 +67,7 @@ class Navbar extends Component {
                     </div>
 
                 </div>
+                </a>
                 <div className="home-nav">
                     <div className="home">
                         <div className="home_1"><NavLink to="/tab/1" replace  activeClassName="zlxactive">今日推荐</NavLink></div>
