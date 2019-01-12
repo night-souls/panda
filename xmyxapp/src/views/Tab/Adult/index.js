@@ -1,4 +1,5 @@
 import { PullToRefresh } from 'antd-mobile';
+import 'antd-mobile/dist/antd-mobile.css'
 import React, { Component } from "react"
 import axios from 'axios'
 import './index.scss'
@@ -47,53 +48,86 @@ class Adult extends Component {
        <ul className="xiaotu">
        {
             this.state.adultli.length ?
-                this.state.adultli.map(item => <li onClick={this.todong.bind(this, item.url.slice(-4))} key={item.id}>
+                this.state.adultli.map(item => <li onClick=
+                    {this.todong.bind(this, item.url.slice(-4))} key={item.id}>
         <img src={item.imageUrl }/>
          <p>{item.title}</p></li>) : null
             }
         </ul>
         </div>
-       <div >
+       <div className="my1234">
        <p className="ltitle1">大家都在用</p>
-        <ul className="down1">
-          {
-            this.state.adultlist.length ?
-                this.state.adultlist.map(item => <li key={item.id}
-                    onClick={this.todetail.bind(this, item.id)}
+        
+                <ul>
+               
+              <PullToRefresh
+                    damping={60}
+                    ref={el => this.ptr = el}
+                    direction={ 'up' }
+                    refreshing={this.state.refreshing}
+                    onRefresh={() => {
+                        this.setState({
+                            refreshing: true,
+                            need: this.state.need += 20
+                        });
+                        getlist12(this.state.need).then(res => {
+                            this.setState({
+                                refreshing: false,
+                                adultlist: [...this.state.adultlist, ...res.list]
+                            })
+                        })
+                    }}
                     >
-          <img src={item.image} title={item.qunTitle} className="goods"/>
-          <p>{item.title}</p><div className="baodi3">
-          <span className="baodi1">天猫</span>
-           <span className="baodi2">  包邮</span></div>
-           <p><span className="count5">${item.originPrice}</span></p></li>
-                ) : null
-            }
-      <PullToRefresh
-            damping={50}
-            ref={el => this.ptr = el}
-            direction={ 'up' }
-            refreshing={this.state.refreshing}
-            onRefresh={() => {
-                this.setState({
-                    refreshing: true,
-                    need: this.state.need += 20
-                });
-                getlist12(this.state.need).then(res => {
-                    this.setState({
-                        refreshing: false,
-                        adultlist: [...this.state.adultlist, ...res.list]
-                    })
-                })
-            }}
-            >
-      </PullToRefresh>
-       </ul>
+                     {this.state.adultlist.length ?
+                this.state.adultlist.map(item => 
+                    <li key={item.id} onClick={this.toDetail.bind(this,item.id)}>
+                {item.type == 1 ?
+                        <div className="commodity-card" key={item.id}>
+
+                        <div className="commodity-container" key={item.id}>
+                            <img src={item.image} className="commodity-card-img" key={item.id}/>
+                        </div>
+                        
+                    <div className="commodity-card-msg">
+                            <div className="commodity-card-title">{item.qunTitle}</div>
+                            <div className="commodity-card-keyword">
+                                <span className="keyword">天猫</span>
+                                <span className="free-postage">包邮</span>
+                            </div>
+                            <div className="commodity-card-foot">
+                               <div className="left">
+                                    <span className="price">
+                                        <span className="price-tag">￥</span>
+                                        <span className="price-strong">{parseInt(item.price)}
+                                        </span>
+                               {(item.price * 10 - parseInt(item.price) * 10) != 0 ?
+
+                            <span className="digit">
+                            .{item.price * 10 - parseInt(item.price) * 10} </span> : null}
+                                    </span>
+                                {(item.saleNum * 0.0001) < 1 ? <span className="sale-num">
+                                {item.saleNum}人已买</span> : <span className="sale-num">
+                                {Math.floor(item.saleNum * 0.0001) + 0.1}万人已买</span>}
+                                    
+                                    <span className="coupon-value">{item.couponValue}</span>
+                               </div> 
+                            </div>
+                        </div>
+                    </div> : <div className="banner-card" style={{
+                            backgroundImage: `url(${item.image})`
+                        }}></div>}
+                </li>
+
+                ): null
+                }
+              </PullToRefresh> 
+           
+               </ul> 
+           
        </div>
     </div>)
     }
-    componentWillUpdate() {}
-    componentWillUnmount() {}
-    todetail(id) {
+    toDetail(id) {
         this.props.history.push(`/tab/detail17/${id}`)
     }
     todong(id) {
