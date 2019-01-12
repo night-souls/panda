@@ -88,13 +88,23 @@ class womenDetail extends Component {
            <p>淘宝图文详情</p>
            <span className="Line2"></span>
        <ul className="down">
-           <li>
-               {
+       {
+           this.state.downList.length==0?
+           null:
+           
+               
                    this.state.downList.map(item=>
-                        <img src={item.photo.url} key={item.id}/>
+                    <li>
+                        {item.photo?
+                        <img src={item.photo.url} key={item.id}/>:
+                        null
+                        }
+                        </li>
                     )
-               }
-           </li>
+
+               
+           
+       }
        </ul>
        </article>
         <footer>

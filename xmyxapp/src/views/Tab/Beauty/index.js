@@ -3,6 +3,7 @@ import "./index.scss"
 import {getLittle} from './model.js'
 import {NavLink} from 'react-router-dom'
 import {PullToRefresh} from 'antd-mobile'
+import ReactDOM from 'react-dom'
 
 
 class Baeuty extends Component {
@@ -17,15 +18,17 @@ class Baeuty extends Component {
             down:true,
             need:0,
             data:[],
+            height:document.documentElement.clientHeight,
         };
     }
     componentDidMount(){
+        const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
         getLittle().then(res=>{
             console.log(res)
             this.setState({
                 littleList:res.categories,
                 datalist:res.items.list,
-               
+                height: hei,
             })
         })
 
@@ -34,6 +37,22 @@ class Baeuty extends Component {
     }
     render() {
         return <div id="beauty">
+        <PullToRefresh
+                         damping={60}
+                         style={{
+                            height: this.state.height,
+                            overflow: 'auto', 
+                        }}
+                         ref={el => this.lv = el}
+                         direction={ 'up' }
+                         refreshing={this.state.refreshing}
+                         onRefresh={() => { 
+                             this.setState({refreshing:true,need:this.state.need+=20 });
+                             getLittle(this.state.need).then(res=>{this.setState({
+                                 refreshing:false,datalist:[...this.state.datalist,...res.items.list]
+                             })})
+                            }
+                        }>
                     <div className="up">
                         <div className="nav">
                         <span className="line"></span>
@@ -63,18 +82,7 @@ class Baeuty extends Component {
                                     <span className="text"></span>
                                     <span className="line"></span>
                                 </div>
-                    <PullToRefresh
-                         damping={60}
-                         ref={el => this.ptr = el}
-                         direction={ 'up' }
-                         refreshing={this.state.refreshing}
-                         onRefresh={() => { 
-                             this.setState({refreshing:true,need:this.state.need+=20 });
-                             getLittle(this.state.need).then(res=>{this.setState({
-                                 refreshing:false,datalist:[...this.state.datalist,...res.items.list]
-                             })})
-                            }
-                        }>
+                                <div>
                         {this.state.datalist.length?
                                 <ul id="tupian">
                                     {
@@ -105,9 +113,10 @@ class Baeuty extends Component {
                                 </ul>
                                 :null
                                  }
-                            </PullToRefresh>
+                            </div>
                             </div>
                     </div>
+                    </PullToRefresh>
  </div>
     }
 
