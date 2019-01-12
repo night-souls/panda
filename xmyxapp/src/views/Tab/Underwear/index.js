@@ -1,6 +1,7 @@
 import { PullToRefresh} from 'antd-mobile';
 import React, { Component } from "react"
 import axios from 'axios'
+import ReactDOM from 'react-dom'
 import {getlist123} from "./model";
 import './index.scss'
 import {NavLink} from "react-router-dom"
@@ -14,7 +15,8 @@ class Underwear extends Component {
      	need:0,
      	data: [],
 	  	underwearli:[],
-	  	underwearlist:[]
+	  	underwearlist:[],
+      height: document.documentElement.clientHeight,
 	  };
 	}
 	 componentWillMount(){
@@ -23,8 +25,9 @@ class Underwear extends Component {
 				underwearli:res.data.data.categories
 			})})}
 	   componentDidMount(){
+      const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
     		getlist123(this.state.need).then(res=>{
-			this.setState({	underwearlist:res.list})
+			this.setState({	underwearlist:res.list, height: hei})
 	})
     }
     render() {
@@ -44,7 +47,8 @@ class Underwear extends Component {
        <ul className="my1234">
        <PullToRefresh
         damping={60}
-        ref={el => this.ptr = el}
+        ref={el => this.lv = el}
+        style={{ height: this.state.height, overflow: 'auto', }}
         direction={ 'up' }
         refreshing={this.state.refreshing}
         onRefresh={() => { 

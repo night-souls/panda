@@ -36,7 +36,7 @@ class Adult extends Component {
         })
     }
     componentDidMount() {
-        console.log(ReactDOM.findDOMNode(this.lv))
+ 
         const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
         //setState第二个参数是属性对象props
         getlist12(this.state.need).then(res => {
