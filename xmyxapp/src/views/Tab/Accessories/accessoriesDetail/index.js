@@ -6,7 +6,7 @@ import ReactSwipe from "react-swipe"
 
 import "swiper/dist/css/swiper.css"
 
-class womenDetail extends Component {
+class accessoriesDetail extends Component {
     constructor(props) {
         super(props);
 
@@ -39,6 +39,7 @@ class womenDetail extends Component {
                 info:res
                 
             })
+            console.log(res.descContentList)
         })
         
         
@@ -54,7 +55,7 @@ class womenDetail extends Component {
     render() {
         return <div id="womenDetail">
         <span className="jump" onClick={this.handleClick.bind(this)}> {'<'} </span>
-		<ul>
+        <ul>
         
         <li>
         <ReactSwipe
@@ -87,21 +88,26 @@ class womenDetail extends Component {
            <span className="Line1"></span>
            <p>淘宝图文详情</p>
            <span className="Line2"></span>
-       <ul className="down">
-           <li>
+       <ul className="down">           
                {
-                   this.state.downList.map(item=>
-                        <img src={item.photo.url} key={item.id}/>
+                this.state.downList.length==0?
+                null
+                   :this.state.downList.map(item=>
+                       <li>  
+                            {item.photo?                   
+                            <img src={item.photo.url}/> 
+                                :null}
+                        </li> 
                     )
                }
-           </li>
+                          
        </ul>
        </article>
         <footer>
             <a href="#">去淘宝购买</a>
         </footer>
             
-		</div>
+        </div>
     }
     handleClick(){
         this.props.history.go(-1);
@@ -125,4 +131,6 @@ export default connect(null, {
 
 
 
-})(womenDetail)
+})(accessoriesDetail)
+
+

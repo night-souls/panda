@@ -12,6 +12,7 @@ import womenDetail from "../views/Tab/Women/womenDetail/index"
 import Beauty from "../views/Tab/Beauty"
 import beautyDetail from "../views/Tab/Beauty/beautyDetail/index"
 import Accessories from "../views/Tab/Accessories"
+import accessoriesDetail from "../views/Tab/Accessories/accessoriesDetail/index"
 import Men from "../views/Tab/Men"
 import Mobile from "../views/Tab/Mobile"
 import Commodity from "../views/Tab/Commodity"
@@ -48,7 +49,8 @@ const router = (
 				<Route path="/tab/2/:id" component={womenDetail} exact></Route>
 				<Route path="/tab/3" component={Beauty} exact></Route>
 				<Route path="/tab/3/:id" component={beautyDetail} exact></Route>
-				<Route path="/tab/4" component={Accessories}></Route>
+				<Route path="/tab/4" component={Accessories} exact></Route>
+				<Route path="/tab/4/:id" component={accessoriesDetail} exact></Route>
 				<Route path="/tab/5" component={Men}></Route>
 				<Route path="/tab/6" component={Mobile}></Route>
 				<Route path="/tab/7" component={Commodity}></Route>
