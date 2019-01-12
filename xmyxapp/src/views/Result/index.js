@@ -20,11 +20,12 @@ class Result extends Component {
     componentDidMount() {
         this.props.hide();
         console.log(this.props.match.params.id);
+
         this.setState({
             id: this.props.match.params.id
         })
         axios({
-            url: `http://www.xiongmaoyouxuan.com/api/search?word=${this.state.id}&start=0&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999`
+            url: `http://www.xiongmaoyouxuan.com/api/search?word=${window.encodeURIComponent(this.props.match.params.id)}&start=0&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999`
         }).then(res => {
             console.log(res.data.data.list)
             this.setState({
@@ -52,7 +53,7 @@ class Result extends Component {
                     need: this.state.need += 40
                 });
                 axios({
-                    url: `http://www.xiongmaoyouxuan.com/api/search?word=${this.state.id}&start=${this.state.need}&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999`
+                    url: `http://www.xiongmaoyouxuan.com/api/search?word=${this.props.match.params.id}&start=${this.state.need}&sort=0&couponOnly=NaN&minPrice=0&maxPrice=99999`
                 }).then(res => {
                     console.log(res.data.data.list)
                     this.setState({
@@ -105,7 +106,7 @@ class Result extends Component {
                 : null}
               </PullToRefresh>
           </div>
-		</div>
+        </div>
     }
 
 }
