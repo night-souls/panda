@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { getLunbo } from "./model"
 import { getImg } from "./model"
 import "./index.scss"
+import ReactDOM from 'react-dom'
 import ReactSwipe from "react-swipe"
 import Swiper from "swiper"
 import "swiper/dist/css/swiper.css"
@@ -17,8 +18,8 @@ class Recommend extends Component {
             datalist: [],
             refreshing: false,
             down: true,
-            need: 0
-
+            need: 0,
+            height: document.documentElement.clientHeight,
         };
     }
     componentWillMount() {
@@ -39,6 +40,10 @@ class Recommend extends Component {
             })
         })
     }
+    componentDidMount(){
+        const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop;
+        this.setState({height: hei})      
+    }
     componentDidUpdate() {
 
         var swiper = new Swiper('.zlx', {
@@ -57,6 +62,27 @@ class Recommend extends Component {
     render() {
         return (
             <div id="Index">
+             <PullToRefresh
+            demping={50}
+            ref={el => this.lv = el}
+            style={{
+                        height: this.state.height,
+                        overflow: 'auto', 
+                    }}
+            direction={'up'}
+            refreshing={this.state.refreshing}
+            onRefresh={() => {
+                this.setState({
+                    refreshing: true,
+                    need: this.state.need += 20
+                });
+                getImg(this.state.need).then(res => {
+                    this.setState({
+                        refreshing: false,
+                        datalist: [...this.state.datalist, ...res]
+                    })
+                })
+            }}>
         <ReactSwipe
             key={this.state.lunbolist.length}
             className="carousel"
@@ -154,23 +180,7 @@ class Recommend extends Component {
         </div>
 
           <div className="content">
-          <PullToRefresh
-            demping={60}
-            ref={el => this.ptr = el}
-            direction={'up'}
-            refreshing={this.state.refreshing}
-            onRefresh={() => {
-                this.setState({
-                    refreshing: true,
-                    need: this.state.need += 20
-                });
-                getImg(this.state.need).then(res => {
-                    this.setState({
-                        refreshing: false,
-                        datalist: [...this.state.datalist, ...res]
-                    })
-                })
-            }}>
+         
             {this.state.datalist.length ?
                 <ul>
                 {
@@ -212,11 +222,11 @@ class Recommend extends Component {
                 }
             </ul>
                 : null}
-              </PullToRefresh>
+             
           </div>
 
 
-
+        </PullToRefresh>
         </div>
         )
     }

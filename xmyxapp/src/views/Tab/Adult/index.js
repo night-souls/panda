@@ -50,24 +50,7 @@ class Adult extends Component {
     render() {
         return (
             <div>
-        <div>
-        <p className="ltitle">潮流精选</p>
-       <ul className="xiaotu">
-       {
-            this.state.adultli.length ?
-                this.state.adultli.map(item => <li onClick=
-                    {this.todong.bind(this, item.url.slice(-4))} key={item.id}>
-        <img src={item.imageUrl }/>
-         <p>{item.title}</p></li>) : null
-            }
-        </ul>
-        </div>
-       <div className="my1234">
-       <p className="ltitle1">大家都在用</p>
-        
-                <ul>
-               
-              <PullToRefresh
+            <PullToRefresh
                     damping={50}
                      style={{
                         height: this.state.height,
@@ -89,6 +72,24 @@ class Adult extends Component {
                         })
                     }}
                     >
+        <div>
+        <p className="ltitle">潮流精选</p>
+       <ul className="xiaotu">
+       {
+            this.state.adultli.length ?
+                this.state.adultli.map(item => <li onClick=
+                    {this.todong.bind(this, item.url.slice(-4))} key={item.id}>
+        <img src={item.imageUrl }/>
+         <p>{item.title}</p></li>) : null
+            }
+        </ul>
+        </div>
+       <div className="my1234">
+       <p className="ltitle1">大家都在用</p>
+        
+                <ul>
+               
+              
                      {this.state.adultlist.length ?
                 this.state.adultlist.map(item => 
                     <li key={item.id} onClick={this.toDetail.bind(this,item.id)}>
@@ -131,11 +132,12 @@ class Adult extends Component {
 
                 ): null
                 }
-              </PullToRefresh> 
+             
            
                </ul> 
            
        </div>
+        </PullToRefresh> 
     </div>)
     }
 

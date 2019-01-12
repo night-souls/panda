@@ -32,6 +32,18 @@ class Underwear extends Component {
     }
     render() {
         return <div>
+        <PullToRefresh
+        damping={60}
+        ref={el => this.lv = el}
+        style={{ height: this.state.height, overflow: 'auto', }}
+        direction={ 'up' }
+        refreshing={this.state.refreshing}
+        onRefresh={() => { 
+          this.setState({ refreshing: true,need:this.state.need+=20 });
+        getlist123(this.state.need).then(res=>{this.setState({
+        refreshing: false,underwearlist:[...this.state.underwearlist,...res.list]
+      })})}}
+      >
         <p className="ltitle">潮流精选</p>
        <ul className="top23">
        {
@@ -45,18 +57,7 @@ class Underwear extends Component {
        </ul>
        <p className="ltitle">大家都在用</p>
        <ul className="my1234">
-       <PullToRefresh
-        damping={60}
-        ref={el => this.lv = el}
-        style={{ height: this.state.height, overflow: 'auto', }}
-        direction={ 'up' }
-        refreshing={this.state.refreshing}
-        onRefresh={() => { 
-          this.setState({ refreshing: true,need:this.state.need+=20 });
-        getlist123(this.state.need).then(res=>{this.setState({
-        refreshing: false,underwearlist:[...this.state.underwearlist,...res.list]
-      })})}}
-      >
+       
      {this.state.underwearlist.length ?
                 this.state.underwearlist.map(item => 
                     <li key={item.id} onClick={this.toDetail.bind(this,item.id)}>
@@ -99,9 +100,10 @@ class Underwear extends Component {
 
                 ): null
                 }
-      </PullToRefresh>
+      
        		
        </ul>
+       </PullToRefresh>
              
 		</div>
     }

@@ -41,7 +41,6 @@ class Result extends Component {
 
     render() {
         return <div>
-          <div className="content">
           <PullToRefresh
             demping={60}
             ref={el => this.ptr = el}
@@ -63,6 +62,7 @@ class Result extends Component {
 
                 })
             }}>
+          <div className="content">
             {this.state.datalist.length ?
                 <ul>
                 {
@@ -104,8 +104,8 @@ class Result extends Component {
                 }
             </ul>
                 : null}
-              </PullToRefresh>
           </div>
+              </PullToRefresh>
         </div>
     }
 
